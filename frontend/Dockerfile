@@ -17,14 +17,12 @@ RUN npm run build
 # Stage 2: Serve
 FROM nginx:alpine
 
-# Copy built files from the previous stage
 COPY --from=build /app/dist /usr/share/nginx/html
 
-# Copy custom nginx config
-COPY nginx/default.conf.template /etc/nginx/templates/default.conf.template
+# ⬇️ This is the important line
+COPY nginx/default.conf /etc/nginx/conf.d/default.conf
 
-# Expose port 80
 EXPOSE 80
 
-# Start nginx
 CMD ["nginx", "-g", "daemon off;"]
+
