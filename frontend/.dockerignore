@@ -1,0 +1,30 @@
+# Node
+node_modules
+npm-debug.log
+yarn-error.log
+pnpm-debug.log
+
+# Git
+.git
+.gitignore
+
+# OS / Editor files
+.DS_Store
+Thumbs.db
+.idea
+.vscode
+
+# Env files (you should inject env vars at runtime)
+.env
+.env.local
+
+# Tests
+coverage
+__tests__
+tests
+
+# Build cache & misc
+dist
+build
+.tmp
+.cache
