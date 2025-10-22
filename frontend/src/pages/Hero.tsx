@@ -1,25 +1,23 @@
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
+import { Link } from "react-router-dom";
+import heroBackground from "../assets/hero-background.jpg";
 
 export default function Hero() {
-  const { data, isLoading, error } = useQuery({
-    queryKey: ["health"],
-    queryFn: async () => {
-      const res = await axios.get("/api/health");
-      return res.data;
-    },
-  });
-
-  if (isLoading) return <p>Loading...</p>;
-  if (error) return <p>Error!</p>;
-
   return (
-    <div className="hero bg-base-200 min-h-screen">
-      <div className="hero-content text-center">
+    <div
+      className="hero min-h-screen"
+      style={{
+        backgroundImage:
+          `url(${heroBackground})`,
+      }}
+    >
+      <div className="hero-overlay bg-opacity-30"></div>
+      <div className="hero-content text-neutral-content text-center">
         <div className="max-w-md">
-          <h1 className="text-5xl font-bold">Aquaclear</h1>
-          <p className="py-6">Backend status: {data?.ok ? "Online" : "Offline"}</p>
-          <button className="btn btn-primary">Get Started</button>
+          <h1 className="mb-5 text-5xl font-bold text-white">Aquaclear</h1>
+          <p className="mb-5 font-medium text-white">
+            Over 20 years protecting lakes, ponds, reedbeds, and wetlands across the UK. From vegetation control to dredging, we keep your water safe and beautiful.
+          </p>
+          <Link to="/home" className="btn btn-primary">Book a service today</Link>
         </div>
       </div>
     </div>
