@@ -1,9 +1,9 @@
-import service1 from "../assets/service1.jpg";
-import service2 from "../assets/service2.jpg";
-import service3 from "../assets/service3.jpg";
-import service4 from "../assets/service4.jpg";
-import service5 from "../assets/service5.jpg";
-import service6 from "../assets/service6.jpg";
+import service1 from "../assets/services/service1.jpg";
+import service2 from "../assets/services/service2.jpg";
+import service3 from "../assets/services/service3.jpg";
+import service4 from "../assets/services/service4.jpg";
+import service5 from "../assets/services/service5.jpg";
+import service6 from "../assets/services/service6.jpg";
 
 export interface Service {
   title: string;

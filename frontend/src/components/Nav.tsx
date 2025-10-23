@@ -2,11 +2,16 @@ import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 export default function Nav() {
+  // Separate states for mobile and desktop
   const [servicesOpen, setServicesOpen] = useState(false);
   const [galleryOpen, setGalleryOpen] = useState(false);
+  const [servicesOpenMobile, setServicesOpenMobile] = useState(false);
+  const [galleryOpenMobile, setGalleryOpenMobile] = useState(false);
 
   const servicesRef = useRef<HTMLLIElement>(null);
   const galleryRef = useRef<HTMLLIElement>(null);
+  const servicesMobileRef = useRef<HTMLLIElement>(null);
+  const galleryMobileRef = useRef<HTMLLIElement>(null);
 
   // Close dropdowns when clicking outside
   useEffect(() => {
@@ -22,6 +27,18 @@ export default function Nav() {
         !galleryRef.current.contains(event.target as Node)
       ) {
         setGalleryOpen(false);
+      }
+      if (
+        servicesMobileRef.current &&
+        !servicesMobileRef.current.contains(event.target as Node)
+      ) {
+        setServicesOpenMobile(false);
+      }
+      if (
+        galleryMobileRef.current &&
+        !galleryMobileRef.current.contains(event.target as Node)
+      ) {
+        setGalleryOpenMobile(false);
       }
     };
 
@@ -50,6 +67,7 @@ export default function Nav() {
               />
             </svg>
           </div>
+
           <ul
             tabIndex={0}
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
@@ -60,13 +78,16 @@ export default function Nav() {
             <li>
               <Link to="/about">About</Link>
             </li>
-            {/* Services Parent */}
-            <li ref={servicesRef}>
-              <a onClick={() => setServicesOpen(!servicesOpen)}>Services</a>
-              {servicesOpen && (
-                <ul className="p-2 z-50">
+
+            {/* Services Parent - Mobile */}
+            <li ref={servicesMobileRef} className="relative">
+              <a onClick={() => setServicesOpenMobile(!servicesOpenMobile)}>
+                Services
+              </a>
+              {servicesOpenMobile && (
+                <ul className="absolute left-0 mt-2 bg-base-100 border border-base-300 rounded-box shadow-lg p-2 z-50 w-56">
                   <li>
-                    <Link to="/services/weed-cutting">Weed & Reed Cutting</Link>
+                    <Link to="/services/weed-cutting">Weed Cutting</Link>
                   </li>
                   <li>
                     <Link to="/services/reed-bed-control">
@@ -90,18 +111,21 @@ export default function Nav() {
                 </ul>
               )}
             </li>
-            {/* Gallery Parent */}
-            <li ref={galleryRef}>
-              <a onClick={() => setGalleryOpen(!galleryOpen)}>Gallery</a>
-              {galleryOpen && (
-                <ul className="p-2 w-48 z-50">
+
+            {/* Gallery Parent - Mobile */}
+            <li ref={galleryMobileRef} className="relative">
+              <a onClick={() => setGalleryOpenMobile(!galleryOpenMobile)}>
+                Gallery
+              </a>
+              {galleryOpenMobile && (
+                <ul className="absolute left-0 mt-2 bg-base-100 border border-base-300 rounded-box shadow-lg p-2 z-50 w-56">
                   <li>
                     <Link to="/gallery/weed-reed-cutting">
                       Weed & Reed Cutting
                     </Link>
                   </li>
                   <li>
-                    <Link to="/gallery/silting">Silting</Link>
+                    <Link to="/gallery/silting">Silt Pumping</Link>
                   </li>
                   <li>
                     <Link to="/gallery/excavation-ditching">
@@ -111,6 +135,7 @@ export default function Nav() {
                 </ul>
               )}
             </li>
+
             <li>
               <Link to="/truxor">Truxor</Link>
             </li>
@@ -119,18 +144,20 @@ export default function Nav() {
             </li>
           </ul>
         </div>
+
         <Link to="/home" className="btn btn-ghost text-xl">
           Aquaclear
         </Link>
       </div>
 
-      {/* Navbar Center */}
+      {/* Navbar Center (Desktop) */}
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           <li>
             <Link to="/about">About</Link>
           </li>
-          {/* Services Parent */}
+
+          {/* Services Parent - Desktop */}
           <li ref={servicesRef}>
             <details open={servicesOpen}>
               <summary
@@ -143,7 +170,7 @@ export default function Nav() {
               </summary>
               <ul className="p-2 w-48 z-50">
                 <li>
-                  <Link to="/services/weed-cutting">Weed & Reed Cutting</Link>
+                  <Link to="/services/weed-cutting">Weed Cutting</Link>
                 </li>
                 <li>
                   <Link to="/services/reed-bed-control">Reed Bed Control</Link>
@@ -165,12 +192,13 @@ export default function Nav() {
               </ul>
             </details>
           </li>
-          {/* Gallery Parent */}
+
+          {/* Gallery Parent - Desktop */}
           <li ref={galleryRef}>
             <details open={galleryOpen}>
               <summary
                 onClick={(e) => {
-                  e.preventDefault(); // prevent native toggle
+                  e.preventDefault();
                   setGalleryOpen(!galleryOpen);
                 }}
               >
@@ -183,7 +211,7 @@ export default function Nav() {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/gallery/silting">Silting</Link>
+                  <Link to="/gallery/silting">Silt Pumping</Link>
                 </li>
                 <li>
                   <Link to="/gallery/excavation-ditching">
@@ -212,7 +240,7 @@ export default function Nav() {
           className="select select-bordered select-sm"
           onChange={(e) => {
             document.documentElement.setAttribute("data-theme", e.target.value);
-            localStorage.setItem("theme", e.target.value); // persist choice
+            localStorage.setItem("theme", e.target.value);
           }}
           defaultValue={localStorage.getItem("theme") || "light"}
         >

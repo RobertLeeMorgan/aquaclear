@@ -42,7 +42,7 @@ export default function Home() {
         <h2 className="text-2xl font-semibold text-center mb-8">
           Trusted by Leading Environmental Organisations
         </h2>
-        <div className="flex flex-wrap justify-center items-center gap-10 opacity-95 hover:opacity-100 transition">
+        <div className="flex flex-wrap justify-center items-center gap-6 sm:gap-10 opacity-95 hover:opacity-100 transition">
           {agencies.map((agency: Agency) => (
             <img
               key={agency.title}
@@ -97,7 +97,7 @@ export default function Home() {
       </section>
 
       {/* Testimonials */}
-      <section className="bg-base-200 py-16 px-6">
+      <section className="bg-base-200 sm:py-16 py-10 px-6">
         <h2 className="text-3xl font-bold text-center text-primary mb-10">
           What Our Clients Say
         </h2>
@@ -130,7 +130,7 @@ export default function Home() {
       </section>
 
       {/* About */}
-      <section className="py-16 bg-base-200 px-6">
+      <section className="sm:py-16 py-10 bg-base-200 px-6">
         <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-6 items-center">
           <div className="text-center lg:text-left">
             <h2 className="text-3xl font-bold mb-4 text-primary">
@@ -148,7 +148,7 @@ export default function Home() {
             </a>
           </div>
 
-          <div className="flex justify-center ">
+          <div className="hidden lg:flex justify-center">
             <img
               src={header}
               alt="Aquaclear team working on site"

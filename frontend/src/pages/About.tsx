@@ -8,7 +8,7 @@ export default function About() {
         {/* Header Section */}
         <div className="text-center mb-12">
           <h1 className="text-5xl font-bold text-primary mb-4">
-            About Aquaclear Water Management
+            About Aquaclear
           </h1>
           <p className="text-lg text-base-content/80">
             Specialists in waterway, reed bed, and wetland management — combining decades of experience
@@ -21,7 +21,7 @@ export default function About() {
           <img
             src={truxor}
             alt="Aquaclear team working on a waterway"
-            className="rounded-2xl shadow-xl object-cover w-full h-80"
+            className="rounded-2xl shadow-xl object-cover w-full sm:h-80 h-48"
           />
           <div>
             <h2 className="text-3xl font-semibold mb-4">Who We Are</h2>

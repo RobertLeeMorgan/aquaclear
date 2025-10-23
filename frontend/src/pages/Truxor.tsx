@@ -21,7 +21,7 @@ export default function Truxor() {
           <img
             src={truxor}
             alt="Truxor Amphibious Harvester"
-            className="rounded-xl shadow-lg max-w-md object-cover"
+            className="rounded-2xl shadow-xl object-cover w-full max-w-md sm:h-60 h-48"
           />
         </figure>
 
