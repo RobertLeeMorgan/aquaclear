@@ -1,7 +1,7 @@
 export default function SiltMethods() {
   return (
-    <div className="py-16">
-      <div className="max-w-4xl mx-auto px-6 space-y-8">
+    <div className="py-8">
+      <div className="max-w-6xl mx-auto px-2 sm:px-8 space-y-8">
         {/* Header */}
         <div className="text-center space-y-4">
           <h1 className="text-4xl font-bold text-primary">
@@ -38,7 +38,7 @@ export default function SiltMethods() {
               <img
                 src="/images/services/siltbags.webp"
                 alt="Dewatering bags setup"
-                className="rounded-xl shadow-md object-cover w-full h-48 sm:h-64"
+                className="rounded-xl shadow-md object-cover w-full h-48 max-w-2xl sm:h-64 justify-self-center"
               />
               <ul className="list-disc list-inside text-sm text-base-content/70">
                 <li>Half size: 5m × 6m</li>
@@ -65,7 +65,7 @@ export default function SiltMethods() {
               <img
                 src="/images/services/siltbarrier.webp"
                 alt="Geotextile barrier setup"
-                className="rounded-xl shadow-md object-cover w-full h-48 sm:h-64"
+                className="rounded-xl shadow-md object-cover w-full h-48 max-w-2xl sm:h-64 justify-self-center"
               />
             </div>
           </div>
@@ -88,7 +88,7 @@ export default function SiltMethods() {
               <img
                 src="/images/services/siltbunds.webp"
                 alt="Soil bund containment"
-                className="rounded-xl shadow-md object-cover w-full h-48 sm:h-64"
+                className="rounded-xl shadow-md object-cover w-full h-48 max-w-2xl sm:h-64 justify-self-center"
               />
             </div>
           </div>

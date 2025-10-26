@@ -1,7 +1,7 @@
 export default function ClientList() {
   return (
     <div className="card bg-base-100 shadow-lg border border-base-300">
-      <div className="card-body">
+      <div className="card-body px-4 sm:px-8 py-6 md:py-10">
         <h2 className="text-2xl font-semibold mb-4 text-primary">
           Organisations We’ve Worked With
         </h2>

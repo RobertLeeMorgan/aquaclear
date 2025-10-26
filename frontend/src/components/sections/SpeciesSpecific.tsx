@@ -4,8 +4,8 @@ import BeforeAfter from "../../components/ui/BeforeAfter";
 
 export default function SpeciesSpecific() {
     return (
-        <section className="space-y-6">
-                  <h2 className="text-3xl font-bold text-primary text-center mb-6">
+        <section className="space-y-6 ">
+                  <h2 className="text-3xl font-bold text-primary text-center mb-4">
                     Species-Specific Information
                   </h2>
         

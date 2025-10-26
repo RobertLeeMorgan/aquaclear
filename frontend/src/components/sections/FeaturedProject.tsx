@@ -3,7 +3,7 @@ import BeforeAfter from "../ui/BeforeAfter";
 
 export default function FeaturedProject() {
   return (
-    <section className="pt-6 bg-base-200 px-6">
+    <section className="pt-6 bg-base-200 px-4 sm:px-8 py-6 md:py-10">
       <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-8 items-center">
         <BeforeAfter
           before="/images/before/wales.webp"

@@ -1,6 +1,6 @@
 export default function TruxorContact() {
     return (
-        <section className="mt-8 bg-base-200 p-4 rounded-lg shadow-inner">
+        <section className="mt-8 bg-base-200 px-4 sm:px-8 py-6 md:py-10 rounded-lg shadow-inner">
           <h3 className="text-xl font-semibold text-primary mb-2">
             Truxor UK Contact
           </h3>

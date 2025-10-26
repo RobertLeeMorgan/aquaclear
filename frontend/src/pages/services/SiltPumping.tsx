@@ -5,8 +5,7 @@ import PageHeader from "../../components/layout/PageHeader";
 
 export default function SiltPumping() {
   return (
-    <div className="bg-base-200 py-12">
-      <div className="max-w-6xl mx-auto px-6 space-y-12">
+      <div className="max-w-6xl mx-auto px-4 sm:px-8 py-16 space-y-12">
         {/* ---------------- Header ---------------- */}
         <PageHeader
           title="Dredging & Silt Pumping"
@@ -18,7 +17,7 @@ export default function SiltPumping() {
 
         {/* ---------------- Problems Section ---------------- */}
         <div className="card bg-base-100 shadow-md border border-base-300">
-          <div className="card-body p-6 md:p-10">
+          <div className="card-body px-4 sm:px-8 py-6 md:py-10">
             <h2 className="card-title text-2xl text-primary mb-4">
               Common Problems Caused by Silt Build-Up
             </h2>
@@ -64,7 +63,7 @@ export default function SiltPumping() {
                   className="object-cover h-56 w-full"
                 />
               </figure>
-              <div className="card-body">
+              <div className="card-body px-4 sm:px-8 py-6 md:py-10">
                 <h3 className="card-title text-xl text-primary">The Truxor</h3>
                 <p className="text-base-content/80">
                   The Truxor Amphibious Harvester can be fitted with dredging
@@ -83,7 +82,7 @@ export default function SiltPumping() {
                   className="object-cover h-56 w-full"
                 />
               </figure>
-              <div className="card-body">
+              <div className="card-body px-4 sm:px-8 py-6 md:py-10">
                 <h3 className="card-title text-xl text-primary">
                   The Doro Pump
                 </h3>
@@ -104,7 +103,7 @@ export default function SiltPumping() {
                   className="object-cover h-56 w-full"
                 />
               </figure>
-              <div className="card-body">
+              <div className="card-body px-4 sm:px-8 py-6 md:py-10">
                 <h3 className="card-title text-xl text-primary">
                   The Grab Bucket
                 </h3>
@@ -120,7 +119,7 @@ export default function SiltPumping() {
 
         {/* ---------------- Containers Section ---------------- */}
         <div className="card bg-base-100 border border-base-300 shadow-md">
-          <div className="card-body p-6 md:p-10 space-y-6">
+          <div className="card-body px-4 sm:px-8 py-6 md:py-10 space-y-6">
             <h2 className="card-title text-2xl text-primary">
               Silt Containers & Water Separation
             </h2>
@@ -192,6 +191,5 @@ export default function SiltPumping() {
           silting
         />
       </div>
-    </div>
   );
 }

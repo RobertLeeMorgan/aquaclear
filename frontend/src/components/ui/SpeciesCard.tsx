@@ -14,7 +14,7 @@ export default function SpeciesCard({ species }: { species: Species }) {
         />
       </figure>
 
-      <div className="card-body space-y-3 flex-1">
+      <div className="card-body space-y-3 px-4 sm:px-8 flex-1">
         <div>
           <h2 className={`text-primary text-xl font-semibold ${
               expanded ? "" : "line-clamp-1"

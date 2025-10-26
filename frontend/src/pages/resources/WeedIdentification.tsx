@@ -5,8 +5,8 @@ import { weeds, reeds } from "./weedIdentification";
 
 export default function WeedIdentification() {
   return (
-    <div className="bg-base-200 py-12">
-      <div className="max-w-6xl mx-auto px-6 space-y-16">
+    <div className="bg-base-200 py-16">
+      <div className="max-w-6xl mx-auto px-4 sm:px-8 space-y-16">
         <PageHeader
           title="Aquatic Weed Identification Guide"
           subtitle="Use this guide to identify common aquatic weeds found in UK watercourses. Aquaclear Water Management provide safe and effective solutions for all species listed below."

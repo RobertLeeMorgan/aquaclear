@@ -1,10 +1,10 @@
 export default function ContactPage() {
   return (
-    <div className="p-6 flex flex-col items-center space-y-8">
+    <div className="py-16 flex flex-col items-center space-y-8 px-4 sm:px-8">
       {/* Contact Form */}
-      <div className="card w-full max-w-2xl shadow-2xl bg-base-100">
-        <div className="card-body">
-          <h2 className="text-3xl text-primary font-bold text-center mb-4">Contact Us</h2>
+      <div className="card w-full max-w-2xl shadow-2xl bg-base-100 ">
+        <div className="card-body px-4 sm:px-8">
+          <h2 className="text-4xl text-primary font-bold text-center mb-4">Contact Us</h2>
           <form className="space-y-4">
             
             {/* Full Name */}

@@ -12,7 +12,7 @@ export default function BeforeAfter({
   afterDesc,
 }: BeforeAfterProps) {
   return (
-    <div className="flex justify-center my-6">
+    <div className="flex justify-center my-auto px-0 sm:px-4 ">
       <div
         className="
           diff 

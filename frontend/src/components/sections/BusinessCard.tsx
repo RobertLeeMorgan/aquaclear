@@ -1,15 +1,9 @@
 import { FaFacebookF, FaTwitter } from "react-icons/fa";
-import aquaclearLogo from "../../assets/logos/aquaclear.webp"
 
 export default function BusinessCard() {
   return (
     <section className="max-w-2xl">
-      <img
-        src={aquaclearLogo}
-        alt="Aquaclear Water Management"
-        className="w-40 mb-2 h-auto justify-self-center"
-      />
-      <h2 className="text-xl font-bold mb-2">Aquaclear Water Management</h2>
+      <h2 className="text-xl font-bold mb-2 text-primary">Aquaclear Water Management</h2>
       <p className="text-sm text-gray-600 mb-1">Cardiff, UK</p>
       <p className="text-sm text-gray-600 mb-1">
         Office: 01446 730886 | Mobile: 07814 741491

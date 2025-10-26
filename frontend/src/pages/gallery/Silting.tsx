@@ -1,10 +1,11 @@
 import PageHeader from "../../components/layout/PageHeader";
 import SiltMethods from "../../components/sections/SiltMethods";
 import BeforeAfter from "../../components/ui/BeforeAfter";
+import ProjectCard from "../../components/ui/ProjectCard";
 
 export default function SiltPumping() {
   return (
-    <div className="max-w-6xl mx-auto px-6 py-16 space-y-16">
+    <div className="max-w-6xl mx-auto px-4 sm:px-8 py-16 space-y-16">
       <PageHeader
         title="Silt Pumping & Dewatering"
         subtitle="We undertake a range of silt management projects across the UK, from
@@ -14,8 +15,8 @@ export default function SiltPumping() {
       />
 
       {/* Multiple Winter Works */}
-      <div className="card bg-base-100 border border-base-300 shadow-md">
-        <div className="grid md:grid-cols-2 gap-6 p-6 items-center">
+      <ProjectCard>
+        <div className="grid md:grid-cols-2 gap-6 p-6 items-center px-4 sm:px-8">
           <div className="space-y-3">
             <h2 className="text-2xl font-semibold text-primary">
               Multiple Winter Works — Semi-Permeable Membranes
@@ -41,12 +42,12 @@ export default function SiltPumping() {
             />
           </div>
         </div>
-      </div>
+      </ProjectCard>
 
       {/* Utility Company */}
-      <div className="card bg-base-100 border border-base-300 shadow-md">
-        <div className="grid md:grid-cols-2 gap-6 p-6 md:flex-row-reverse items-center">
-          <div className="order-2 md:order-1 space-y-3">
+      <ProjectCard>
+        <div className="grid md:grid-cols-2 gap-6 p-6 items-center px-4 sm:px-8">
+          <div className="md:order-2 space-y-3">
             <h2 className="text-2xl font-semibold text-primary">
               Water Utility Company — Silt Cake Processing
             </h2>
@@ -58,7 +59,7 @@ export default function SiltPumping() {
               facilities.
             </p>
           </div>
-          <div className="order-1 md:order-2">
+          <div className="md:order-1">
             <img
               src="/images/services/siltcake.webp"
               alt="Silt cake processing tank"
@@ -66,11 +67,11 @@ export default function SiltPumping() {
             />
           </div>
         </div>
-      </div>
+      </ProjectCard>
 
       {/* North England Reserve */}
-      <div className="card bg-base-100 border border-base-300 shadow-md">
-        <div className="grid md:grid-cols-2 gap-6 p-6 items-center">
+      <ProjectCard>
+        <div className="grid md:grid-cols-2 gap-6 p-6 items-center px-4 sm:px-8">
           <div className="space-y-3">
             <h2 className="text-2xl font-semibold text-primary">
               North England Nature Reserve — Bund & Teram System
@@ -90,18 +91,18 @@ export default function SiltPumping() {
               className="rounded-xl object-cover h-52 w-full shadow-sm"
             />
             <img
-              src="/images/projects/northreserve1.webp"
+              src="/images/projects/northreserve2.webp"
               alt="Teram in use at reserve"
               className="rounded-xl object-cover h-52 w-full shadow-sm hidden md:block"
             />
           </div>
         </div>
-      </div>
+      </ProjectCard>
 
       {/* Pembrokeshire Reserve */}
-      <div className="card bg-base-100 border border-base-300 shadow-md">
-        <div className="grid md:grid-cols-2 gap-6 p-6 md:flex-row-reverse items-center">
-          <div className="order-2 md:order-1 space-y-3">
+      <ProjectCard>
+        <div className="grid md:grid-cols-2 gap-6 p-6 items-center px-4 sm:px-8">
+          <div className="md:order-2 space-y-3">
             <h2 className="text-2xl font-semibold text-primary">
               Pembrokeshire Nature Reserve — Dewatering Bags & Grab Bucket
             </h2>
@@ -113,7 +114,7 @@ export default function SiltPumping() {
               reopening the natural flow of the brook.
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:order-1">
             <img
               src="/images/projects/pembs1.webp"
               alt="Silt pump in action"
@@ -136,12 +137,12 @@ export default function SiltPumping() {
             />
           </div>
         </div>
-      </div>
+      </ProjectCard>
 
       {/* Valleys */}
-      <div className="card bg-base-100 border border-base-300 shadow-md">
+      <ProjectCard>
         <div className="p-6 space-y-6">
-          <h2 className="text-2xl font-semibold text-primary text-center">
+          <h2 className="text-2xl font-semibold text-primary text-center px-4 sm:px-8">
             Welsh Valleys — Grab Bucket Desilting
           </h2>
           <p className="text-base-content/80 leading-relaxed text-center max-w-3xl mx-auto">
@@ -154,11 +155,11 @@ export default function SiltPumping() {
             after="/images/after/valleys2.webp"
           />
         </div>
-      </div>
+      </ProjectCard>
 
       {/* Preston */}
-      <div className="card bg-base-100 border border-base-300 shadow-md">
-        <div className="grid md:grid-cols-2 gap-6 p-6 items-center">
+      <ProjectCard>
+        <div className="grid md:grid-cols-2 gap-6 p-6 items-center px-4 sm:px-8">
           <div className="space-y-3">
             <h2 className="text-2xl font-semibold text-primary">
               Preston — Silt Pump & Geotextile Barrier
@@ -178,7 +179,8 @@ export default function SiltPumping() {
             />
           </div>
         </div>
-      </div>
+      </ProjectCard>
+
       <div className="card bg-base-100 border border-base-300 shadow-md">
         <SiltMethods />
       </div>

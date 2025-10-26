@@ -6,7 +6,7 @@ export default function Clients() {
   return (
     <>
       {/* Hero + Client List Section */}
-      <section className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-20">
+      <section className="max-w-6xl px-4 sm:px-8 mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-16">
         <PageHeader
           title="Our Clients"
           subtitle="Over the years, Aquaclear Water Management has partnered with
@@ -21,7 +21,7 @@ export default function Clients() {
         />
         <ClientList />
       </section>
-      <div className="divider bg-base-200 m-0 p-0"></div>
+      <div className="divider bg-base-200 m-0 p-0 px-4 sm:px-8"></div>
 
       <Testimonials />
     </>

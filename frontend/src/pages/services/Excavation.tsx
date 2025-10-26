@@ -5,8 +5,8 @@ import ContactUsCard from "../../components/common/ContactUsCard";
 
 export default function ExcavationDitching() {
   return (
-    <div className="bg-base-200 py-12">
-      <div className="max-w-6xl mx-auto px-6 space-y-12">
+    <div className="bg-base-200 py-16">
+      <div className="max-w-6xl mx-auto px-4 sm:px-8 space-y-12">
         <PageHeader
           title="Excavation & Ditching"
           subtitle="Our Truxor Amphibious Harvester allows us to reach and excavate
@@ -17,7 +17,7 @@ export default function ExcavationDitching() {
 
         {/* ---------------- Problems Section ---------------- */}
         <div className="card bg-base-100 shadow-md border border-base-300">
-          <div className="card-body p-6 md:p-10">
+          <div className="card-body px-4 sm:px-8 py-6 md:py-10">
             <h2 className="card-title text-2xl text-primary mb-4">
               Why Excavation & Ditching Is Important
             </h2>
@@ -60,7 +60,7 @@ export default function ExcavationDitching() {
                   className="object-cover h-56 w-full"
                 />
               </figure>
-              <div className="card-body">
+              <div className="card-body px-4 sm:px-8">
                 <h3 className="card-title text-xl text-primary">
                   Truxor Excavator Arm
                 </h3>
@@ -82,7 +82,7 @@ export default function ExcavationDitching() {
                   className="object-cover h-56 w-full"
                 />
               </figure>
-              <div className="card-body">
+              <div className="card-body px-4 sm:px-8">
                 <h3 className="card-title text-xl text-primary">Grab Bucket</h3>
                 <p className="text-base-content/80">
                   Ideal for stony or gravel beds, the grab bucket dredges and
@@ -96,7 +96,7 @@ export default function ExcavationDitching() {
 
         {/* ---------------- Habitat Creation Section ---------------- */}
         <div className="card bg-base-100 border border-base-300 shadow-md">
-          <div className="grid md:grid-cols-2 gap-6 items-center p-6 md:p-10">
+          <div className="grid md:grid-cols-2 gap-6 items-center px-4 sm:px-8 py-6 md:py-10">
             <div className="space-y-4">
               <h2 className="text-2xl font-semibold text-primary">
                 Habitat Creation & Water Management

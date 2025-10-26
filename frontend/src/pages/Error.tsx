@@ -13,7 +13,7 @@ export default function Error() {
     <>
       <NavBar />
       <section
-        className="hero min-h-screen bg-base-200 flex flex-col items-center justify-center px-6 text-center"
+        className="hero min-h-screen bg-base-200 flex flex-col items-center justify-center px-4 sm:px-8 text-center"
         style={{
           backgroundImage: `url(/images/hero-background.webp)`,
         }}

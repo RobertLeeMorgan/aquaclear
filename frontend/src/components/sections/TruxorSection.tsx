@@ -1,7 +1,7 @@
 export default function TruxorSection() {
     return (
         <section className="card bg-base-100 shadow-xl border border-base-300">
-          <div className="card-body">
+          <div className="card-body px-4 sm:px-8">
             <h2 className="card-title text-3xl text-primary mb-4 text-center">
               The Truxor Amphibious Harvester
             </h2>

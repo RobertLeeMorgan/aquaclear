@@ -5,7 +5,7 @@ import PageHeader from "../components/layout/PageHeader";
 export default function About() {
   return (
     <div className="py-16 flex flex-col items-center">
-      <div className="max-w-5xl w-full">
+      <div className="max-w-5xl px-4 sm:px-8 w-full">
         <PageHeader
           title="About Aquaclear"
           subtitle="Specialists in waterway, reed bed, and wetland management — combining decades of experience with innovative amphibious technology."

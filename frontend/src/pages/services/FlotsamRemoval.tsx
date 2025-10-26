@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 
 export default function FlotsamRemoval() {
   return (
-    <div className="flex justify-center py-8 sm:py-12 sm:px-6">
-      <div className="w-full max-w-6xl space-y-16">
+    <div className="flex justify-center py-16 px-4 sm:px-8">
+      <div className="w-full max-w-6xl space-y-10 md:space-y-16">
         <PageHeader
           title="Trash and Flotsam Removal"
           subtitle="Urban waterways and drainage systems are often unsightly due to the

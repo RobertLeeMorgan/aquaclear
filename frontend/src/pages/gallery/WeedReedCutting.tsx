@@ -3,22 +3,29 @@ import PageHeader from "../../components/layout/PageHeader";
 
 export default function WeedReedCutting() {
   return (
-    <div className="container mx-auto px-4 py-16 space-y-16">
+    <div className="container mx-auto px-4 sm:px-8 py-16 space-y-10">
       {/* Header */}
       <PageHeader
         title="Reed & Weed Cutting Projects"
         subtitle="Our reed and weed cutting services help restore water flow,
-            encourage biodiversity, and maintain healthy aquatic environments.
-            Below are a selection of our recent restoration and maintenance
-            projects, followed by a look at reed bed creation and wading pools."
+      encourage biodiversity, and maintain healthy aquatic environments.
+      Below are a selection of our recent restoration and maintenance
+      projects, followed by a look at reed bed creation and wading pools."
       />
 
       {/* ---------------- RSPB Cambridge ---------------- */}
       <div className="card bg-base-100 shadow-xl border border-base-300 overflow-hidden">
-        <div className="card-body px-6 md:px-8">
+        <div className="card-body px-4 py-6 sm:p-8">
           <div className="grid md:grid-cols-2 gap-6 items-center">
-            {/* Text column with title inside */}
-            <div>
+            <div className="order-1 md:order-2">
+              <BeforeAfter
+                before="/images/before/rspb.webp"
+                beforeDesc="Dense overgrowth before cutting"
+                after="/images/after/rspb.webp"
+                afterDesc="Open channel restored after cutting"
+              />
+            </div>
+            <div className="order-2 md:order-1 py-2">
               <h2 className="text-2xl font-semibold text-primary mb-3">
                 RSPB Cambridge
               </h2>
@@ -29,21 +36,23 @@ export default function WeedReedCutting() {
                 improve natural water circulation.
               </p>
             </div>
-            <BeforeAfter
-              before="/images/before/rspb.webp"
-              beforeDesc="Dense overgrowth before cutting"
-              after="/images/after/rspb.webp"
-              afterDesc="Open channel restored after cutting"
-            />
           </div>
         </div>
       </div>
 
       {/* ---------------- CRT Oxfordshire ---------------- */}
       <div className="card bg-base-100 shadow-xl border border-base-300 overflow-hidden">
-        <div className="card-body px-6 md:px-8">
+        <div className="card-body px-4 py-6 sm:p-8">
           <div className="grid md:grid-cols-2 gap-6 items-center">
-            <div className="order-2 md:order-1">
+            <div className="order-1 md:order-1">
+              <BeforeAfter
+                before="/images/before/crt.webp"
+                beforeDesc="Overgrown waterway before clearance"
+                after="/images/after/crt.webp"
+                afterDesc="Flow restored post-maintenance"
+              />
+            </div>
+            <div className="order-2 md:order-2">
               <h2 className="text-2xl font-semibold text-primary mb-3">
                 Canal & River Trust – Oxfordshire
               </h2>
@@ -54,21 +63,23 @@ export default function WeedReedCutting() {
                 enabling improved oxygenation and wildlife movement.
               </p>
             </div>
-            <BeforeAfter
-              before="/images/before/crt.webp"
-              beforeDesc="Overgrown waterway before clearance"
-              after="/images/after/crt.webp"
-              afterDesc="Flow restored post-maintenance"
-            />
           </div>
         </div>
       </div>
 
       {/* ---------------- Dartford ---------------- */}
       <div className="card bg-base-100 shadow-xl border border-base-300 overflow-hidden">
-        <div className="card-body px-6 md:px-8">
+        <div className="card-body px-4 py-6 sm:p-8">
           <div className="grid md:grid-cols-2 gap-6 items-center">
-            <div>
+            <div className="order-1 md:order-2">
+              <BeforeAfter
+                before="/images/before/dartford.webp"
+                beforeDesc="Choked channel pre-clearance"
+                after="/images/after/dartford.webp"
+                afterDesc="Healthy watercourse after cutting"
+              />
+            </div>
+            <div className="order-2 md:order-1">
               <h2 className="text-2xl font-semibold text-primary mb-3">
                 Dartford
               </h2>
@@ -79,21 +90,23 @@ export default function WeedReedCutting() {
                 flow season.
               </p>
             </div>
-            <BeforeAfter
-              before="/images/before/dartford.webp"
-              beforeDesc="Choked channel pre-clearance"
-              after="/images/after/dartford.webp"
-              afterDesc="Healthy watercourse after cutting"
-            />
           </div>
         </div>
       </div>
 
       {/* ---------------- CRT Wales ---------------- */}
       <div className="card bg-base-100 shadow-xl border border-base-300 overflow-hidden">
-        <div className="card-body px-6 md:px-8">
+        <div className="card-body px-4 py-6 sm:p-8">
           <div className="grid md:grid-cols-2 gap-6 items-center">
-            <div className="order-2 md:order-1">
+            <div className="order-1 md:order-1">
+              <BeforeAfter
+                before="/images/before/wales.webp"
+                beforeDesc="Weed congestion before maintenance"
+                after="/images/after/wales.webp"
+                afterDesc="Flow restored and waterline visible"
+              />
+            </div>
+            <div className="order-2 md:order-2">
               <h2 className="text-2xl font-semibold text-primary mb-3">
                 Canal & River Trust – Wales
               </h2>
@@ -104,21 +117,15 @@ export default function WeedReedCutting() {
                 aesthetics, and ecosystem function.
               </p>
             </div>
-            <BeforeAfter
-              before="/images/before/wales.webp"
-              beforeDesc="Weed congestion before maintenance"
-              after="/images/after/wales.webp"
-              afterDesc="Flow restored and waterline visible"
-            />
           </div>
         </div>
       </div>
 
       {/* ---------------- Reed Bed & Wading Pools ---------------- */}
       <div className="card bg-base-100 shadow-xl border border-base-300 overflow-hidden">
-        <div className="card-body p-6 md:p-10 space-y-8">
+        <div className="card-body px-4 py-6 sm:p-8 space-y-8">
           {/* Section Title */}
-          <div className="text-center space-y-4">
+          <div className="text-center space-y-6">
             <h2 className="text-3xl font-bold text-primary">
               Reed Work – Wading Pools
             </h2>
@@ -132,7 +139,7 @@ export default function WeedReedCutting() {
           </div>
 
           {/* National Trust Section */}
-          <div className="space-y-4">
+          <div className="space-y-6">
             <h3 className="text-2xl font-semibold text-primary">
               National Trust Reed Bed
             </h3>
@@ -150,34 +157,38 @@ export default function WeedReedCutting() {
               <img
                 src="/images/projects/reed3.webp"
                 alt="Wading Pool 3"
-                className="rounded-xl shadow-md object-cover h-48 w-full"
+                className="rounded-xl shadow-md object-cover h-48 w-full hidden md:block"
               />
               <img
                 src="/images/projects/reed4.webp"
                 alt="Wading Pool 4"
-                className="rounded-xl shadow-md object-cover h-48 w-full"
+                className="rounded-xl shadow-md object-cover h-48 w-full hidden md:block"
               />
             </div>
           </div>
 
           {/* RSPB Section */}
-          <div className="space-y-4">
+          <div className="space-y-6">
             <h3 className="text-2xl font-semibold text-primary">
               RSPB Reed Bed
             </h3>
             <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-4">
-              <BeforeAfter
-                before="/images/before/reed1.webp"
-                after="/images/after/reed1.webp"
-                beforeDesc="Before restoration"
-                afterDesc="After restoration"
-              />
-              <BeforeAfter
-                before="/images/before/reed2.webp"
-                after="/images/after/reed2.webp"
-                beforeDesc="Before cutting"
-                afterDesc="Healthy reed pool after works"
-              />
+              <div className="order-1 md:order-1">
+                <BeforeAfter
+                  before="/images/before/reed1.webp"
+                  after="/images/after/reed1.webp"
+                  beforeDesc="Before restoration"
+                  afterDesc="After restoration"
+                />
+              </div>
+              <div className="order-2 md:order-2">
+                <BeforeAfter
+                  before="/images/before/reed2.webp"
+                  after="/images/after/reed2.webp"
+                  beforeDesc="Before cutting"
+                  afterDesc="Healthy reed pool after works"
+                />
+              </div>
             </div>
           </div>
         </div>

@@ -3,18 +3,21 @@ import BeforeAfter from "../../components/ui/BeforeAfter";
 
 export default function ExcavationDitching() {
   return (
-    <div className="container mx-auto px-4 py-16 space-y-20">
+    <div className="container mx-auto px-4 sm:px-8 py-16 space-y-20">
       {/* Header */}
-      <PageHeader title="Habitat Creation & Ditching Projects" subtitle="Our restoration projects combine technical precision and ecological
+      <PageHeader
+        title="Habitat Creation & Ditching Projects"
+        subtitle="Our restoration projects combine technical precision and ecological
           care — rebuilding reed beds, reshaping watercourses, and creating
-          vibrant habitats for aquatic life." />
+          vibrant habitats for aquatic life."
+      />
 
       {/* ---------------- Pembroke Mill Pond ---------------- */}
       <div className="card bg-base-100 shadow-xl border border-base-300 overflow-hidden">
-        <div className="card-body space-y-2">
-          {/* Section 1 - Intro Left, Image Right */}
-          <div className="grid md:grid-cols-2 gap-2 items-center">
-            <div className="space-y-4">
+        <div className="card-body px-4 sm:px-8 space-y-8">
+          {/* Section 1 - Text first */}
+          <div className="grid md:grid-cols-2 gap-4 items-center">
+            <div className="space-y-4 order-1">
               <h2 className="card-title text-2xl text-primary">
                 Pembroke Mill Pond
               </h2>
@@ -30,23 +33,29 @@ export default function ExcavationDitching() {
                 wildlife zones.
               </p>
             </div>
+            <div className="order-2">
             <BeforeAfter
               before="/images/before/millpond1.webp"
               beforeDesc="Reed bed before works"
               after="/images/after/millpond1.webp"
               afterDesc="After bund formation"
+             
             />
+            </div>
           </div>
 
-          {/* Section 2 - Image Left, Text Right */}
-          <div className="grid md:grid-cols-2 gap-2 items-center">
+          {/* Section 2 - Image second on mobile, first on desktop */}
+          <div className="grid md:grid-cols-2 gap-4 items-center">
+            <div className="order-2 md:order-1">
             <BeforeAfter
               before="/images/before/millpond2.webp"
               beforeDesc="Overgrown tree line before clearance"
               after="/images/after/millpond2.webp"
               afterDesc="Cleared bank ready for ditching"
+              
             />
-            <p className="text-base text-base-content/80 leading-relaxed">
+            </div>
+            <p className="text-base text-base-content/80 leading-relaxed order-1 md:order-2">
               Once reeds were harvested, our team used the Truxor’s digging arm
               to carry out ditching and bund shaping. This required careful
               navigation through dense vegetation and unstable terrain.
@@ -58,27 +67,29 @@ export default function ExcavationDitching() {
             </p>
           </div>
 
-          {/* Section 3 - Text Left, Image Right */}
-          <div className="grid md:grid-cols-2 gap-2 items-center">
-            <p className="text-base text-base-content/80 leading-relaxed">
+          {/* Section 3 - Text first again */}
+          <div className="grid md:grid-cols-2 gap-4 items-center">
+            <p className="text-base text-base-content/80 leading-relaxed order-1">
               The bund extended several hundred meters through hedgerows and
               wooded areas. Once the structure was complete, it was left to
               green naturally through spring and summer, forming a thriving
               wetland corridor that now supports diverse aquatic plant life.
             </p>
-            <BeforeAfter
-              before="/images/before/millpond3.webp"
-              beforeDesc="Path before shaping"
-              after="/images/after/millpond3.webp"
-              afterDesc="Bund path established and greening"
-            />
+            <div className="order-2">
+              <BeforeAfter
+                before="/images/before/millpond3.webp"
+                beforeDesc="Path before shaping"
+                after="/images/after/millpond3.webp"
+                afterDesc="Bund path established and greening"
+              />
+            </div>
           </div>
         </div>
       </div>
 
       {/* ---------------- Llanfyllin Scrapes ---------------- */}
       <div className="card bg-base-100 shadow-xl border border-base-300 overflow-hidden">
-        <div className="card-body space-y-2">
+        <div className="card-body px-4 sm:px-8 space-y-2">
           <div className="grid md:grid-cols-2 gap-2 items-center">
             <div className="space-y-4">
               <h2 className="card-title text-2xl text-primary">

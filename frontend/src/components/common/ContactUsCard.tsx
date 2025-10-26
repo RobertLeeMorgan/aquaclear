@@ -19,8 +19,17 @@ export default function ContactUsCard({
   silting,
   treeWork,
 }: ContactProps) {
+  const handleDownload = () => {
+    const link = document.createElement("a");
+    link.href = "/truxor.pdf";
+    link.download = "truxor.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
-    <div className="card bg-base-100 shadow-md border border-base-300 text-center p-8 space-y-4">
+    <div className="card bg-base-100 shadow-md border border-base-300 text-center py-8 px-4 sm:px-8 space-y-4">
       <h3 className="text-2xl font-semibold text-primary">
         Need Help with {title}?
       </h3>
@@ -53,7 +62,11 @@ export default function ContactUsCard({
         <Link to="/contact" className="btn btn-primary mt-2">
           Contact Us
         </Link>
-        {silting && <button className="btn btn-outline mt-2">Download Brochure (PDF)</button>}
+        {silting && (
+          <button className="btn btn-outline mt-2" onClick={handleDownload}>
+            Download Brochure (PDF)
+          </button>
+        )}
       </div>
     </div>
   );

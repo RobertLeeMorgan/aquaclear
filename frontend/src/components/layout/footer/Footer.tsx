@@ -4,8 +4,8 @@ import BusinessCard from "../../sections/BusinessCard";
 
 export default function Footer() {
   return (
-    <footer className="footer bg-base-200 text-base-content p-10">
-      <aside className="order-5 md:order-1 md:ml-4">
+    <footer className="footer bg-base-200 text-base-content px-8 py-6 md:py-10">
+      <aside className="order-5 md:order-1 md:ml-4 m-auto">
         <BusinessCard/>
       </aside>
 

@@ -22,11 +22,12 @@ export default function NavBar() {
             <li><Link to="/about">About</Link></li>
             <MobileMenu label="Services" links={servicesLinks} />
             <MobileMenu label="Gallery" links={galleryLinks} />
+            <li><Link to="/clients">Clients</Link></li>
             <li><Link to="/truxor">Truxor</Link></li>
             <li><Link to="/contact">Contact</Link></li>
           </ul>
         </div>
-        <Link to="/home" className="btn btn-ghost text-xl">Aquaclear</Link>
+        <Link to="/home" className="btn btn-ghost text-primary text-xl">Aquaclear</Link>
       </div>
 
       {/* Center (Desktop) */}

@@ -3,8 +3,8 @@ import TruxorContact from "../components/sections/TruxorContact";
 
 export default function Truxor() {
   return (
-    <div className="flex items-center justify-center p-8">
-      <div className="max-w-4xl w-full card bg-base-100 shadow-2xl p-8 space-y-6">
+    <div className="flex items-center justify-center py-16 px-4 sm:px-8">
+      <div className="max-w-4xl w-full card bg-base-100 shadow-2xl py-8 px-4 sm:px-8 space-y-6">
         <PageHeader
           title="Truxor Amphibious Machines"
           subtitle={
