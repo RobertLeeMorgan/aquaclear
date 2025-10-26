@@ -1,6 +1,5 @@
 import { useRouteError } from "react-router-dom";
-import Nav from "../components/Nav";
-import heroBackground from "../assets/hero-background.jpg";
+import NavBar from "../components/layout/nav/NavBar";
 
 export default function Error() {
   const error = useRouteError() as {
@@ -12,13 +11,17 @@ export default function Error() {
 
   return (
     <>
-      <Nav />
-      <section className="hero min-h-screen bg-base-200 flex flex-col items-center justify-center px-6 text-center" style={{
-        backgroundImage:
-          `url(${heroBackground})`,
-      }}>
+      <NavBar />
+      <section
+        className="hero min-h-screen bg-base-200 flex flex-col items-center justify-center px-6 text-center"
+        style={{
+          backgroundImage: `url(/images/hero-background.webp)`,
+        }}
+      >
         <div className="max-w-lg bg-base-100 shadow-xl rounded-2xl p-10 border border-base-300">
-          <h1 className="text-5xl font-bold text-error mb-4">Something Went Wrong</h1>
+          <h1 className="text-5xl font-bold text-error mb-4">
+            Something Went Wrong
+          </h1>
           <p className="text-lg text-base-content/80 mb-6">
             We’re sorry — an unexpected error occurred while loading this page.
           </p>
@@ -40,11 +43,9 @@ export default function Error() {
             </a>
           </div>
           <p className="mt-10 text-sm text-base-content/60">
-          If the issue persists, please contact support or try again later.
-        </p>
+            If the issue persists, please contact support or try again later.
+          </p>
         </div>
-
-        
       </section>
     </>
   );

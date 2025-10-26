@@ -1,17 +1,17 @@
 export default function Privacy() {
   return (
-    <div className="min-h-screen bg-base-200 py-16 px-6">
+    <div className="py-16 px-6">
       <div className="max-w-5xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-12">
+        <header className="text-center mb-12">
           <h1 className="text-5xl font-bold text-primary mb-3">
             Privacy Policy
           </h1>
-        </div>
+        </header>
 
         {/* Main Card */}
-        <div className="card bg-base-100 shadow-2xl border border-base-300">
-          <div className="card-body px-8 md:px-12 py-10 prose max-w-none">
+        <main className="card bg-base-100 shadow-2xl border border-base-300">
+          <section className="card-body px-8 md:px-12 py-10 prose max-w-none">
             <h2 className="text-2xl font-semibold text-primary">
               Privacy Statement
             </h2>
@@ -190,8 +190,8 @@ export default function Privacy() {
               . We will use commercially reasonable efforts to promptly
               determine and remedy the problem.
             </p>
-          </div>
-        </div>
+          </section>
+        </main>
       </div>
     </div>
   );

@@ -1,29 +1,19 @@
 import { FaExclamationTriangle } from "react-icons/fa";
-import { Link } from "react-router-dom";
-import BeforeAfter from "../../components/BeforeAfter";
-
-import truxorArm from "../../assets/projects/truxorexcavator.jpg";
-import grabBucket from "../../assets/projects/grabbucket.jpg";
-import bundWork from "../../assets/projects/millpond3after.jpg";
-import habitatBefore from "../../assets/projects/millpond1before.jpg";
-import habitatAfter from "../../assets/projects/millpond1after.jpg";
+import BeforeAfter from "../../components/ui/BeforeAfter";
+import PageHeader from "../../components/layout/PageHeader";
+import ContactUsCard from "../../components/common/ContactUsCard";
 
 export default function ExcavationDitching() {
   return (
     <div className="bg-base-200 py-12">
       <div className="max-w-6xl mx-auto px-6 space-y-12">
-        {/* ---------------- Header ---------------- */}
-        <div className="text-center space-y-4">
-          <h1 className="text-4xl md:text-5xl font-bold text-primary">
-            Excavation & Ditching
-          </h1>
-          <p className="text-base md:text-lg text-base-content/80 max-w-3xl mx-auto">
-            Our Truxor Amphibious Harvester allows us to reach and excavate areas
-            that conventional machinery simply can’t. From restoring wetlands to
-            strengthening banks, we deliver precise excavation and ditching works
-            that enhance both water flow and ecological health.
-          </p>
-        </div>
+        <PageHeader
+          title="Excavation & Ditching"
+          subtitle="Our Truxor Amphibious Harvester allows us to reach and excavate
+            areas that conventional machinery simply can’t. From restoring
+            wetlands to strengthening banks, we deliver precise excavation and
+            ditching works that enhance both water flow and ecological health."
+        />
 
         {/* ---------------- Problems Section ---------------- */}
         <div className="card bg-base-100 shadow-md border border-base-300">
@@ -48,8 +38,8 @@ export default function ExcavationDitching() {
             </div>
             <p className="mt-6 text-base-content/80">
               Strategic excavation not only shapes the landscape — it ensures
-              long-term site stability, better water management, and the creation
-              of thriving aquatic ecosystems.
+              long-term site stability, better water management, and the
+              creation of thriving aquatic ecosystems.
             </p>
           </div>
         </div>
@@ -65,7 +55,7 @@ export default function ExcavationDitching() {
             <div className="card bg-base-100 border border-base-300 shadow-md">
               <figure>
                 <img
-                  src={truxorArm}
+                  src="/images/truxor/truxorexcavator.webp"
                   alt="Truxor Excavator Arm"
                   className="object-cover h-56 w-full"
                 />
@@ -77,8 +67,8 @@ export default function ExcavationDitching() {
                 <p className="text-base-content/80">
                   Fitted with a precision digging arm, the Truxor can move large
                   quantities of silt, clay, and gravel even in shallow or boggy
-                  conditions. Material can be deposited safely on nearby banks or
-                  transported by floating platforms.
+                  conditions. Material can be deposited safely on nearby banks
+                  or transported by floating platforms.
                 </p>
               </div>
             </div>
@@ -87,7 +77,7 @@ export default function ExcavationDitching() {
             <div className="card bg-base-100 border border-base-300 shadow-md">
               <figure>
                 <img
-                  src={grabBucket}
+                  src="/images/truxor/grabbucket.webp"
                   alt="Truxor Grab Bucket"
                   className="object-cover h-56 w-full"
                 />
@@ -95,9 +85,9 @@ export default function ExcavationDitching() {
               <div className="card-body">
                 <h3 className="card-title text-xl text-primary">Grab Bucket</h3>
                 <p className="text-base-content/80">
-                  Ideal for stony or gravel beds, the grab bucket dredges and lifts
-                  heavier material with accuracy — removing obstructions and shaping
-                  new channels without harming the existing habitat.
+                  Ideal for stony or gravel beds, the grab bucket dredges and
+                  lifts heavier material with accuracy — removing obstructions
+                  and shaping new channels without harming the existing habitat.
                 </p>
               </div>
             </div>
@@ -124,7 +114,7 @@ export default function ExcavationDitching() {
               </p>
             </div>
             <img
-              src={bundWork}
+              src="/images/after/millpond3.webp"
               alt="Bund and trench formation"
               className="rounded-2xl shadow-md object-cover w-full h-72"
             />
@@ -135,8 +125,8 @@ export default function ExcavationDitching() {
         <div className="text-center space-y-6">
           <h2 className="text-3xl font-bold text-primary">Project Example</h2>
           <BeforeAfter
-            before={habitatBefore}
-            after={habitatAfter}
+            before="/images/before/habitat.webp"
+            after="/images/after/habitat.webp"
             beforeDesc="Before Excavation & Ditching"
             afterDesc="After Habitat Restoration"
           />
@@ -147,31 +137,14 @@ export default function ExcavationDitching() {
             manages water levels while supporting thriving aquatic species.
           </p>
         </div>
-
-        {/* ---------------- Contact Section ---------------- */}
-        <div className="card bg-base-100 shadow-md border border-base-300 text-center p-8 space-y-4">
-          <h3 className="text-2xl font-semibold text-primary">
-            Need Help with Excavation or Water Management?
-          </h3>
-          <p className="text-base-content/80 max-w-2xl mx-auto">
-            To learn more about our excavation and ditching services, or to
+        <ContactUsCard
+          title="Excavation or Water Management"
+          text="To learn more about our excavation and ditching services, or to
             discuss your project, please contact us directly. You can also view
-            more examples in our
-            <Link
-              to="/gallery/excavation-ditching"
-              className="text-primary font-semibold"
-            >
-              {" "}
-              Excavation Gallery
-            </Link>
-            .
-          </p>
-          <div className="flex justify-center">
-            <Link to="/contact" className="btn btn-primary">
-              Contact Us
-            </Link>
-          </div>
-        </div>
+            more examples in our"
+          url="/gallery/excavation-ditching"
+          linkto="Excavation Gallery"
+        />
       </div>
     </div>
   );

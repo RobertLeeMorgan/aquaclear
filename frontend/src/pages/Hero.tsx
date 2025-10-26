@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import heroBackground from "../assets/hero-background.jpg";
 
 export default function Hero() {
   return (
@@ -7,7 +6,7 @@ export default function Hero() {
       className="hero min-h-screen"
       style={{
         backgroundImage:
-          `url(${heroBackground})`,
+          "url(/images/hero-background.webp)",
       }}
     >
       <div className="hero-overlay bg-opacity-30"></div>

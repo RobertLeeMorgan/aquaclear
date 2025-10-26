@@ -2,46 +2,25 @@
 const daisyui = require("daisyui");
 
 module.exports = {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}"
-  ],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {},
   },
   plugins: [daisyui],
   daisyui: {
-    themes: ["light",
-      "dark",
-      "cupcake",
-      "bumblebee",
-      "emerald",
-      "corporate",
-      "synthwave",
-      "retro",
-      "cyberpunk",
-      "valentine",
-      "halloween",
-      "garden",
-      "forest",
-      "aqua",
-      "lofi",
-      "pastel",
-      "fantasy",
-      "wireframe",
-      "black",
-      "luxury",
-      "dracula",
-      "cmyk",
-      "autumn",
-      "business",
-      "acid",
-      "lemonade",
-      "night",
-      "coffee",
-      "winter",
-      "dim",
-      "nord",
-      "sunset",],
+    themes: [ {
+        dark: {
+          ...require("daisyui/src/theming/themes")["dark"],
+          primary: "#0ca1dbff", // new primary for dark
+          secondary: "#0ce65cff"
+        },
+      },
+      {
+        emerald: {
+          ...require("daisyui/src/theming/themes")["emerald"],
+          primary: "#0ca1dbff", // new primary for emerald
+          secondary: "#0ce65cff"
+        },
+      },],
   },
 };

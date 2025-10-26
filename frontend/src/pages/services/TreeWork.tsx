@@ -1,6 +1,4 @@
-import truxorTree from "../../assets/projects/debris.jpg";
-import chainsawWork from "../../assets/projects/chainsawWork.jpg";
-import { Link } from "react-router-dom";
+import ContactUsCard from "../../components/common/ContactUsCard";
 
 export default function TreeWork() {
   return (
@@ -35,7 +33,7 @@ export default function TreeWork() {
             </p>
           </div>
           <img
-            src={truxorTree}
+            src="/images/truxor/debris.webp"
             alt="Truxor removing tree debris from waterway"
             className="rounded-2xl shadow-lg object-cover w-full h-60 sm:h-72"
           />
@@ -44,7 +42,7 @@ export default function TreeWork() {
         {/* Section 2 - Joint Operations */}
         <div className="grid md:grid-cols-2 gap-10 items-center">
           <img
-            src={chainsawWork}
+            src="/images/services/chainsawWork.webp"
             alt="Chainsaw operator clearing overhanging branches"
             className="rounded-2xl shadow-lg object-cover w-full h-60 sm:h-72 order-2 md:order-1"
           />
@@ -65,39 +63,14 @@ export default function TreeWork() {
             </p>
           </div>
         </div>
-
-        {/* Section 3 - Closing */}
-
-        <div className="card bg-base-100 shadow-md border border-base-300 text-center p-8 space-y-4">
-          <h3 className="text-2xl font-semibold text-primary">
-            Need Help with Tree Work?
-          </h3>
-          <div className="max-w-3xl mx-auto text-center space-y-2 pt-4">
-            <p className="text-base text-base-content/80 leading-relaxed">
-              Our experienced teams are fully certified for chainsaw and
-              water-based operations. Whether clearing large fallen trees or
-              managing overgrowth along the banks, we approach every project
-              with precision and care for the ecosystem.
-            </p>
-          </div>
-          <p className="text-base-content/80 max-w-2xl mx-auto">
-            For more information or to discuss a specific project, please
-            contact us directly. You can also view our
-            <Link
-              to="/services/flotsam-removal"
-              className="text-primary font-semibold"
-            >
-              {" "}
-              Debris Clearing{" "}
-            </Link>
-            services.
-          </p>
-          <div className="flex justify-center gap-4">
-            <Link to="/contact" className="btn btn-primary">
-              Contact Us
-            </Link>
-          </div>
-        </div>
+        <ContactUsCard
+          title="Tree Work"
+          url="/services/flotsam-removal"
+          text="For more information or to discuss a specific project, please contact us directly. You can also view our"
+          linkto="Debris Clearing"
+          extension="services"
+          treeWork
+        />
       </div>
     </section>
   );

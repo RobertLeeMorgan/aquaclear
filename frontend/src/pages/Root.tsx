@@ -1,15 +1,18 @@
 import { Outlet } from "react-router-dom";
-import Nav from "../components/Nav";
-import Footer from "../components/Footer";
+import Navbar from "../components/layout/nav/NavBar";
+import Footer from "../components/layout/footer/Footer";
+import PageContainer from "../components/layout/PageContainer";
 // import Breadcrumbs from "../components/Breadcrumbs";
 
 export default function RootLayout() {
   return (
     <>
-      <Nav />
+      <Navbar />
       {/* <Breadcrumbs /> */}
-      <Outlet />
-      <Footer/>
+      <PageContainer>
+        <Outlet />
+      </PageContainer>
+      <Footer />
     </>
   );
 }

@@ -3,13 +3,13 @@ export default function Terms() {
     <div className="min-h-screen bg-base-200 py-16 px-6">
       <div className="max-w-5xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-12">
+        <header className="text-center mb-12">
           <h1 className="text-5xl font-bold text-primary mb-3">Terms of Use</h1>
-        </div>
+        </header>
 
         {/* Main Card */}
-        <div className="card bg-base-100 shadow-2xl border border-base-300">
-          <div className="card-body px-8 md:px-12 py-10 prose max-w-none">
+        <main className="card bg-base-100 shadow-2xl border border-base-300">
+          <section className="card-body px-8 md:px-12 py-10 prose max-w-none">
             <h2 className="text-2xl font-semibold text-primary">
               AGREEMENT BETWEEN USER AND AquaClear Water Management
             </h2>
@@ -134,8 +134,8 @@ export default function Terms() {
             <p>
               Pursuant to Title 17, United States Code, Section 512(c)(2), notifications of claimed copyright infringement under United States copyright law should be sent to Service Provider's Designated Agent. ALL INQUIRIES NOT RELEVANT TO THE FOLLOWING PROCEDURE WILL RECEIVE NO RESPONSE. See Notice and Procedure for Making Claims of Copyright Infringement.
             </p>
-          </div>
-        </div>
+          </section>
+        </main>
       </div>
     </div>
   );

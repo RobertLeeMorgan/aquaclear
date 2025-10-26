@@ -1,11 +1,9 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { createBrowserRouter,
-  RouterProvider} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Hero from "./pages/Hero";
-import Services from "./pages/Services";
 import Truxor from "./pages/Truxor";
 import RootLayout from "./pages/Root";
 import Error from "./pages/Error";
@@ -21,13 +19,14 @@ import SiltPumping from "./pages/services/SiltPumping";
 import TreeWork from "./pages/services/TreeWork";
 import WeedCutting from "./pages/services/WeedCutting";
 import Excavation from "./pages/services/Excavation";
+import WeedIdentification from "./pages/resources/WeedIdentification.tsx";
 
 const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
   {
     index: true, // Hero outside of RootLayout
-    element: <Hero />, 
+    element: <Hero />,
     errorElement: <Error />,
   },
   {
@@ -36,7 +35,6 @@ const router = createBrowserRouter([
     errorElement: <Error />,
     children: [
       { path: "home", element: <Home /> },
-      { path: "services", element: <Services /> },
       { path: "truxor", element: <Truxor /> },
       { path: "contact", element: <Contact /> },
       { path: "about", element: <About /> },
@@ -46,35 +44,42 @@ const router = createBrowserRouter([
     ],
   },
   {
-  path: "gallery",
-  element: <RootLayout />,
-  errorElement: <Error />,
-  children: [
-    { path: "weed-reed-cutting", element: <WeedReedCutting /> },
-    { path: "silting", element: <Silting /> },
-    { path: "excavation-ditching", element: <ExcavationDitching /> },
-  ],
-},
-{
-  path: "services",
-  element: <RootLayout />,
-  errorElement: <Error />,
-  children: [
-    { path: "flotsam-removal", element: <FlotsamRemoval /> },
-    { path: "reed-bed-control", element: <ReedBedControl /> },
-    { path: "silt-pumping", element: <SiltPumping /> },
-    { path: "tree-work", element: <TreeWork /> },
-    { path: "weed-cutting", element: <WeedCutting /> },
-    { path: "excavation-ditching", element: <Excavation /> },
-  ],
-}
-
+    path: "gallery",
+    element: <RootLayout />,
+    errorElement: <Error />,
+    children: [
+      { path: "weed-reed-cutting", element: <WeedReedCutting /> },
+      { path: "silting", element: <Silting /> },
+      { path: "excavation-ditching", element: <ExcavationDitching /> },
+    ],
+  },
+  {
+    path: "resources",
+    element: <RootLayout />,
+    errorElement: <Error />,
+    children: [
+      { path: "weed-identification-guide", element: <WeedIdentification /> },
+    ],
+  },
+  {
+    path: "services",
+    element: <RootLayout />,
+    errorElement: <Error />,
+    children: [
+      { path: "flotsam-removal", element: <FlotsamRemoval /> },
+      { path: "reed-bed-control", element: <ReedBedControl /> },
+      { path: "silt-pumping", element: <SiltPumping /> },
+      { path: "tree-work", element: <TreeWork /> },
+      { path: "weed-cutting", element: <WeedCutting /> },
+      { path: "excavation-ditching", element: <Excavation /> },
+    ],
+  },
 ]);
 
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-        <RouterProvider router={router} />
+      <RouterProvider router={router} />
     </QueryClientProvider>
   );
 }

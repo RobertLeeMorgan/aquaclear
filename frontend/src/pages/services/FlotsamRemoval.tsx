@@ -1,24 +1,19 @@
-import truxorGrab from "../../assets/projects/debris.jpg";
-import chainsawWork from "../../assets/projects/chainsawWork.jpg";
+import ContactUsCard from "../../components/common/ContactUsCard";
+import PageHeader from "../../components/layout/PageHeader";
 import { Link } from "react-router-dom";
 
 export default function FlotsamRemoval() {
   return (
-    <div className="min-h-screen bg-base-200 flex justify-center py-8 sm:py-12 sm:px-6">
-      <div className="w-full max-w-6xl p-10 space-y-16">
-        {/* HEADER */}
-        <div className="text-center space-y-4">
-          <h1 className="text-4xl font-bold text-primary">
-            Trash and Flotsam Removal
-          </h1>
-          <p className="text-lg text-base-content/80 leading-relaxed">
-            Urban waterways and drainage systems are often unsightly due to the
+    <div className="flex justify-center py-8 sm:py-12 sm:px-6">
+      <div className="w-full max-w-6xl space-y-16">
+        <PageHeader
+          title="Trash and Flotsam Removal"
+          subtitle="Urban waterways and drainage systems are often unsightly due to the
             presence of trash, plastic bottles, and other aquatic flotsam.
             Build-up of these materials causes interrupted water flow and
             obstruction. Aquaclear specialises in the removal of debris and
-            flotsam from these waterways.
-          </p>
-        </div>
+            flotsam from these waterways."
+        />
 
         {/* DEBRIS CLEARANCE */}
         <div className="space-y-3">
@@ -59,7 +54,7 @@ export default function FlotsamRemoval() {
             </ul>
           </div>
           <img
-            src={truxorGrab}
+            src="/images/truxor/debris.webp"
             alt="Truxor removing debris from a canal"
             className="rounded-2xl shadow-md w-full max-h-[420px] object-cover"
           />
@@ -68,7 +63,7 @@ export default function FlotsamRemoval() {
         {/* TREE DEBRIS SECTION */}
         <div className="grid lg:grid-cols-2 gap-10 items-center">
           <img
-            src={chainsawWork}
+            src="/images/services/chainsawWork.webp"
             alt="Chainsaw operators clearing tree debris"
             className="rounded-2xl shadow-md w-full max-h-[420px] object-cover order-2 lg:order-1"
           />
@@ -91,29 +86,14 @@ export default function FlotsamRemoval() {
             </p>
           </div>
         </div>
-
-        {/* CONTACT SECTION */}
-        <div className="card bg-base-100 shadow-md border border-base-300 text-center p-8 space-y-4">
-          <h3 className="text-2xl font-semibold text-primary">
-            Need Help with Flotsam Removal?
-          </h3>
-          <p className="text-base-content/80 max-w-2xl mx-auto leading-relaxed">
-            For more information or to discuss a specific project, please
-            contact us directly. You can also view our{" "}
-            <Link
-              to="/services/tree-work"
-              className="text-primary font-semibold hover:underline"
-            >
-              Tree Work
-            </Link>{" "}
-            services.
-          </p>
-          <div className="flex justify-center">
-            <Link to="/contact" className="btn btn-primary mt-2">
-              Contact Us
-            </Link>
-          </div>
-        </div>
+        <ContactUsCard
+          title="Flotsam Removal"
+          text="For more information or to discuss a specific project, please
+            contact us directly. You can also view our"
+          extension="services"
+          url="/services/tree-work"
+          linkto="Tree Work"
+        />
       </div>
     </div>
   );
