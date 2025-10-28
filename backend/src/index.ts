@@ -2,14 +2,9 @@ import express from "express";
 import cors from "cors";
 import chatbotRouter from "./routes/chatbot.js";
 import contactRouter from "./routes/contact.js";
-import dotenv from "dotenv";
 import helmet from "helmet";
 import { ErrorRequestHandler } from "express";
 import rateLimit from "express-rate-limit";
-
-if (process.env.NODE_ENV !== "production") {
-  await import("dotenv").then((dotenv) => dotenv.config());
-}
 
 const app = express();
 
