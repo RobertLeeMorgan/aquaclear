@@ -42,6 +42,6 @@
     "skipLibCheck": true,
     
   },
-  "include": ["./src/**/*.ts", "tests/**/*.ts"],
+  "include": ["./src/**/*.ts", "tests/**/*.ts", "src/hooks/useContactForm.tsx"],
   "exclude": ["node_modules", "tests", "dist"]
 }

@@ -1,9 +1,33 @@
+import { useEffect, useState } from "react";
+import { Toast } from "../components/ui/Toast";
+import { useContactForm } from "../components/hooks/useContactForm";
+import { contactSchema } from "../components/schemas/contactSchema";
+import type { ContactData } from "../components/schemas/contactSchema";
+
 export default function ContactPage() {
+  const { loading, toast, setToast, submitContact } = useContactForm();
+  const [fadeOut, setFadeOut] = useState(false);
+
+  useEffect(() => {
+    if (toast) {
+      const fadeTimer = setTimeout(() => setFadeOut(true), 2500);
+      const removeTimer = setTimeout(() => {
+        setToast(null);
+        setFadeOut(false);
+      }, 3000);
+
+      return () => {
+        clearTimeout(fadeTimer);
+        clearTimeout(removeTimer);
+      };
+    }
+  }, [toast, setToast]);
+
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.target as HTMLFormElement;
 
-    const data = {
+    const data: ContactData = {
       name: (form.elements.namedItem("name") as HTMLInputElement).value,
       email: (form.elements.namedItem("email") as HTMLInputElement).value,
       tel: (form.elements.namedItem("tel") as HTMLInputElement).value,
@@ -13,27 +37,31 @@ export default function ContactPage() {
         .value,
     };
 
-    const res = await fetch("/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    });
-
-    if (res.ok) {
-      alert("Message sent!");
-    } else {
-      alert("Failed to send message");
+    const result = contactSchema.safeParse(data);
+    
+    if (!result.success) {
+      const firstError = result.error.issues[0]?.message;
+      setToast({ type: "error", message: firstError || "Invalid input." });
+      return;
     }
+
+    await submitContact(data, form);
   }
 
   return (
-    <div className="py-16 flex flex-col items-center space-y-8 px-4 sm:px-8">
+    <div className="py-16 flex flex-col items-center space-y-8 px-4 sm:px-8 relative">
+      {/* Toast */}
+      {toast && (
+        <Toast type={toast.type} message={toast.message} show={!fadeOut} />
+      )}
+
       {/* Contact Form */}
-      <div className="card w-full max-w-2xl shadow-2xl bg-base-100 ">
+      <div className="card w-full max-w-2xl shadow-2xl bg-base-100">
         <div className="card-body px-4 sm:px-8">
           <h2 className="text-4xl text-primary font-bold text-center mb-4">
             Contact Us
           </h2>
+
           <form className="space-y-4" onSubmit={handleSubmit}>
             {/* Full Name */}
             <div className="form-control">
@@ -139,8 +167,19 @@ export default function ContactPage() {
 
             {/* Submit */}
             <div className="form-control mt-6">
-              <button type="submit" className="btn btn-primary w-full">
-                Send Message
+              <button
+                type="submit"
+                className="btn btn-primary w-full flex items-center justify-center gap-2"
+                disabled={loading}
+              >
+                {loading ? (
+                  <>
+                    <span className="loading loading-spinner loading-md"></span>
+                    Sending...
+                  </>
+                ) : (
+                  "Send Message"
+                )}
               </button>
             </div>
           </form>

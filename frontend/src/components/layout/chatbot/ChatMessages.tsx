@@ -15,13 +15,17 @@ export default function ChatbotMessages({
           className={`chat ${msg.role === "user" ? "chat-end" : "chat-start"}`}
         >
           <div
-            className={`chat-bubble shadow-md text-md ${
+            className={`chat-bubble shadow-md text-md break-words whitespace-pre-wrap ${
               msg.role === "user"
                 ? "chat-bubble-primary"
-                : "chat-bubble-secondary"
+                : "chat-bubble"
             }`}
           >
-            {msg.text}
+            {msg.text === "loading" ? (
+              <span className="loading loading-dots loading-md"></span>
+            ) : (
+              msg.text
+            )}
           </div>
         </div>
       ))}

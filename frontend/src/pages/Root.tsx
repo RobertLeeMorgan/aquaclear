@@ -9,7 +9,7 @@ import { useEffect } from "react";
 
 export default function RootLayout() {
   useEffect(() => {
-    fetch("https://aquaclear-backend.onrender.com/api/health")
+    fetch("/api/wakeup")
       .then((res) => {
         if (res.ok) {
           console.log("Backend responded — it’s awake!");
