@@ -8,7 +8,7 @@ import { ErrorRequestHandler } from "express";
 import rateLimit from "express-rate-limit";
 
 if (process.env.NODE_ENV !== "production") {
-  require("dotenv").config();
+  await import("dotenv").then((dotenv) => dotenv.config());
 }
 
 const app = express();
