@@ -1,5 +1,9 @@
 import express from "express";
 import cors from "cors";
+import chatbotRouter from "./routes/chatbot.js"
+import dotenv from "dotenv"
+
+dotenv.config();
 
 const app = express();
 app.use(cors());
@@ -9,8 +13,15 @@ app.get("/", (req, res) => {
   res.send("Aquaclear API is running!");
 });
 
-app.get("/api/health", (req, res) => {
-  res.status(200).send({ ok: true });
+app.post("/api/contact", (req, res) => {
+  console.log("hello")
+  res.status(200);
+});
+
+app.use("/api", chatbotRouter);
+
+app.get("/api/wakeup", (req, res) => {
+  res.status(200);
 });
 
 const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 5000;
