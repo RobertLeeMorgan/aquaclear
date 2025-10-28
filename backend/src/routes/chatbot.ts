@@ -1,9 +1,7 @@
 import express from "express";
-import dotenv from "dotenv";
 import rateLimit from "express-rate-limit";
 import { AQUACLEAR_SYSTEM_PROMPT } from "../config/aiPrompt.js";
 
-dotenv.config();
 const router = express.Router();
 
 /* -------------------- Rate Limiting -------------------- */
