@@ -7,7 +7,9 @@ import helmet from "helmet";
 import { ErrorRequestHandler } from "express";
 import rateLimit from "express-rate-limit";
 
-dotenv.config();
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
+}
 
 const app = express();
 
