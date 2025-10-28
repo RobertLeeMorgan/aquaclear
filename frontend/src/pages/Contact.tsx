@@ -1,12 +1,40 @@
 export default function ContactPage() {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const form = e.target as HTMLFormElement;
+
+    const data = {
+      name: (form.elements.namedItem("name") as HTMLInputElement).value,
+      email: (form.elements.namedItem("email") as HTMLInputElement).value,
+      tel: (form.elements.namedItem("tel") as HTMLInputElement).value,
+      postcode: (form.elements.namedItem("postcode") as HTMLInputElement).value,
+      source: (form.elements.namedItem("source") as HTMLSelectElement).value,
+      message: (form.elements.namedItem("message") as HTMLTextAreaElement)
+        .value,
+    };
+
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+
+    if (res.ok) {
+      alert("Message sent!");
+    } else {
+      alert("Failed to send message");
+    }
+  }
+
   return (
     <div className="py-16 flex flex-col items-center space-y-8 px-4 sm:px-8">
       {/* Contact Form */}
       <div className="card w-full max-w-2xl shadow-2xl bg-base-100 ">
         <div className="card-body px-4 sm:px-8">
-          <h2 className="text-4xl text-primary font-bold text-center mb-4">Contact Us</h2>
-          <form className="space-y-4">
-            
+          <h2 className="text-4xl text-primary font-bold text-center mb-4">
+            Contact Us
+          </h2>
+          <form className="space-y-4" onSubmit={handleSubmit}>
             {/* Full Name */}
             <div className="form-control">
               <label htmlFor="fullName" className="label">
@@ -72,7 +100,9 @@ export default function ContactPage() {
             {/* Source */}
             <div className="form-control">
               <label htmlFor="source" className="label">
-                <span className="label-text font-semibold">How did you find us?</span>
+                <span className="label-text font-semibold">
+                  How did you find us?
+                </span>
               </label>
               <select
                 id="source"
