@@ -1,55 +1,85 @@
-import express from "express";
-import nodemailer from "nodemailer";
-import { contactSchema } from "../schemas/contactSchema.js"; // adjust the path if needed
+import express, { Request, Response } from "express";
+import { contactSchema } from "../schemas/contactSchema.js";
+import {
+  TransactionalEmailsApi,
+  SendSmtpEmail,
+  TransactionalEmailsApiApiKeys,
+} from "@getbrevo/brevo";
 
 const router = express.Router();
 
-router.post("/contact", async (req, res) => {
-  try {
-    // Validate the body with Zod
-    const parseResult = contactSchema.safeParse(req.body);
+interface ContactFormData {
+  name: string;
+  email: string;
+  tel: string;
+  postcode: string;
+  source: string | undefined;
+  message: string;
+}
 
+router.post("/contact", async (req: Request, res: Response) => {
+  try {
+    // Validate with Zod
+    const parseResult = contactSchema.safeParse(req.body);
     if (!parseResult.success) {
-      const firstError = parseResult.error.issues[0]?.message || "Invalid form input.";
+      const firstError =
+        parseResult.error.issues[0]?.message || "Invalid form input.";
       return res.status(400).json({ error: firstError });
     }
 
-    const { name, email, tel, postcode, source, message } = parseResult.data;
+    const { name, email, tel, postcode, source, message }: ContactFormData =
+      parseResult.data;
 
-    // --- Configure email transport ---
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: Number(process.env.SMTP_PORT) || 587,
-      secure: false,
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
+    // Set up Brevo client
+    const brevoClient = new TransactionalEmailsApi();
+    brevoClient.setApiKey(
+      TransactionalEmailsApiApiKeys.apiKey,
+      process.env.BREVO_API_KEY!
+    );
+
+    // Build the email payload
+    const mailPayload = new SendSmtpEmail();
+    mailPayload.sender = {
+      name: "Aquaclear Website",
+      email: process.env.BREVO_SENDER_EMAIL!,
+    };
+    mailPayload.to = [
+      {
+        email:
+          process.env.BREVO_CONTACT_RECEIVER!,
+        name: "Contact Form",
       },
-    });
-
-    // --- Email content ---
-    const mailOptions = {
-      from: `"Aquaclear Website" <${process.env.SMTP_USER}>`,
-      to: process.env.CONTACT_RECEIVER || "info@aquaclearwatermanagement.com",
-      subject: `New Contact Form Submission from ${name}`,
-      text: `Name: ${name}
+    ];
+    mailPayload.subject = `New Contact Form Submission from ${name}`;
+    mailPayload.textContent = `Name: ${name}
 Email: ${email}
 Tel: ${tel}
 Postcode: ${postcode}
 Source: ${source || "Not specified"}
 
 Message:
-${message}`,
-    };
+${message}`;
 
-    // --- Send email ---
-    await transporter.sendMail(mailOptions);
+    // Set reply-to so replies go to the user
+    mailPayload.replyTo = { email, name };
 
-    console.log("Contact form email sent successfully from:", email);
-    res.status(200).json({ success: true, message: "Message sent successfully" });
+    // Send the email
+    const response = await brevoClient.sendTransacEmail(mailPayload);
+
+    console.log(
+      "Contact form email sent successfully from:",
+      email,
+      "Brevo response:",
+      response
+    );
+    res
+      .status(200)
+      .json({ success: true, message: "Message sent successfully" });
   } catch (error) {
     console.error("Error handling contact form:", error);
-    res.status(500).json({ error: "Failed to send message. Please try again later." });
+    res
+      .status(500)
+      .json({ error: "Failed to send message. Please try again later." });
   }
 });
 

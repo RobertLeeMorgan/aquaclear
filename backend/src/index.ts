@@ -5,13 +5,16 @@ import contactRouter from "./routes/contact.js";
 import helmet from "helmet";
 import { ErrorRequestHandler } from "express";
 import rateLimit from "express-rate-limit";
+// import dotenv from "dotenv"
+
+// dotenv.config()
 
 const app = express();
 
 app.use(cors({
   origin: process.env.NODE_ENV === "production"
     ? ["https://aquaclear.onrender.com"]
-    : ["http://localhost:5173"], // or whatever your Vite/React dev port is
+    : ["http://localhost:5173"],
   methods: ["GET", "POST"],
   allowedHeaders: ["Content-Type", "Authorization"],
 }));
@@ -19,6 +22,8 @@ app.use(cors({
 app.use(express.json());
 
 app.use(helmet());
+
+app.set("trust proxy", 1);
 
 app.use("/api", contactRouter);
 
