@@ -6,7 +6,7 @@ export const chatbotSchema = z.object({
   message: z
     .string()
     .trim()
-    .min(3, "Message cannot be empty")
+    .min(1, "Message cannot be empty")
     .max(700, "Message too long")
     .transform(stripHTML),
 });

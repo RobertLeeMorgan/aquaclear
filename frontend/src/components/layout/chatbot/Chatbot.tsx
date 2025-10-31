@@ -7,10 +7,19 @@ import { useChatbot } from "../../hooks/useChatbot";
 
 export default function Chatbot() {
   const [open, setOpen] = useState(false);
-  const { messages, input, setInput, sendMessage, messagesEndRef, greet } = useChatbot();
+  const {
+    messages,
+    input,
+    setInput,
+    sendMessage,
+    messagesEndRef,
+    loadHistory,
+  } = useChatbot();
 
   useEffect(() => {
-    if (open) greet();
+    if (open) {
+      loadHistory();
+    }
   }, [open]);
 
   return (

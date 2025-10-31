@@ -1,6 +1,6 @@
 export default function AboutSection() {
   return (
-    <section className="bg-base-200 px-4 sm:px-8 py-6 md:py-10">
+    <section className="bg-base-200 px-4 sm:px-8 py-6 md:py-10 mb-16">
       <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-6 items-center">
         <div className="text-center lg:text-left">
           <h2 className="text-3xl font-bold mb-4 text-primary">
