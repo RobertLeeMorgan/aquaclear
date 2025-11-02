@@ -10,7 +10,6 @@ export function useSendMessage() {
         credentials: "include",
       });
 
-      // If request failed, parse JSON to extract structured error
       if (!res.ok) {
         let err: any = {};
         try {

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import SEOLink from "../ui/SEOLink";
 
 export default function Hero() {
   return (
@@ -18,12 +18,12 @@ export default function Hero() {
             the UK.
           </p>
           <div className="flex justify-center gap-4">
-            <Link to="/services" className="btn btn-primary">
+            <SEOLink to="/services" className="btn btn-primary">
               Our Services
-            </Link>
-            <Link to="/contact" className="btn btn-outline btn-secondary">
+            </SEOLink>
+            <SEOLink to="/contact" className="btn btn-outline btn-secondary">
               Get in Touch
-            </Link>
+            </SEOLink>
           </div>
         </div>
       </div>

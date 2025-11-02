@@ -28,6 +28,7 @@ export default function ChatInput({
   return (
     <div className="mt-4 flex gap-2 items-end">
       <textarea
+        id="chatbot"
         ref={textareaRef}
         placeholder="Type a message..."
         className="textarea textarea-bordered w-full resize-none overflow-hidden leading-snug"

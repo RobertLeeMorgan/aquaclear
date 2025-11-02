@@ -13,7 +13,7 @@ export default function AboutSection() {
             delivers safe, efficient operations for nature reserves, councils,
             and private estates.
           </p>
-          <a href="/about" className="btn btn-outline btn-primary">
+          <a href="/about" aria-label="About link" className="btn btn-outline btn-primary">
             Learn More
           </a>
         </div>

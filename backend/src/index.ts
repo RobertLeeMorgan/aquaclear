@@ -2,13 +2,12 @@ import express from "express";
 import cors from "cors";
 import chatbotRouter from "./routes/chatbot.js";
 import contactRouter from "./routes/contact.js";
-import { maybeCleanupHistory } from "./utils/cleanup.js";
 import helmet from "helmet";
 import { ErrorRequestHandler } from "express";
 import cookieParser from "cookie-parser";
 
-// import dotenv from "dotenv";
-// dotenv.config();
+import dotenv from "dotenv";
+dotenv.config();
 
 const app = express();
 
@@ -31,8 +30,6 @@ app.use(helmet());
 app.use(cookieParser());
 
 app.set("trust proxy", 1);
-
-maybeCleanupHistory();
 
 app.use("/api", contactRouter);
 

@@ -1,20 +1,35 @@
-export default function getSectionFilter(message: string): string | null {
+export default function getSectionFilter(message: string): string[] {
   const lower = message.toLowerCase();
+  const sections: string[] = [];
 
   if (
-    /\b(projects|examples|photos|pictures|gallery|work done|before and after)\b/.test(
+    /\b(projects|examples|photos|pictures|gallery|portfolio|case study)\b/.test(
       lower
     )
   )
-    return "gallery";
+    sections.push("gallery");
 
-  if (/\bidentify|what weed|species|which plant|invasives|identification\b/.test(lower))
-    return "resources";
+  if (
+    /\b(identify|species|invasive|identification|aquatic plants)\b/.test(lower)
+  )
+    sections.push("resources");
 
-  if (/\bcontact|phone|email|reach|speak\b/.test(lower)) return "contact";
+  if (/\b(contact|phone|email|reach|support|enquire)\b/.test(lower))
+    sections.push("contact");
 
-  if (/\bdredge|pump|silt|excavation|ditching|habitat creation|reed|weed|flotsam|tree work\b/.test(lower))
-    return "services";
+  if (
+    /\b(truxor|amphibious harvester|grab bucket|grip rake|excavator arm|reed rake|silt pumping tool)\b/.test(
+      lower
+    )
+  )
+    sections.push("truxor");
 
-  return null;
+  if (
+    /\b(dredge|pump|silt|excavation|ditching|habitat creation|reed|weed|flotsam|tree work|water management|lake maintenance|pond clearance|vegetation removal)\b/.test(
+      lower
+    )
+  )
+    sections.push("services");
+
+  return sections;
 }

@@ -1,6 +1,6 @@
 import ContactUsCard from "../../components/common/ContactUsCard";
 import PageHeader from "../../components/layout/PageHeader";
-import { Link } from "react-router-dom";
+import SEOLink from "../../components/ui/SeoLink";
 
 export default function FlotsamRemoval() {
   return (
@@ -76,12 +76,12 @@ export default function FlotsamRemoval() {
               trees. Our chainsaw-trained operators can work in conjunction with
               the Truxor to remove these obstructions altogether. For more
               information, visit our{" "}
-              <Link
+              <SEOLink
                 to="/services/tree-work"
                 className="text-primary font-semibold hover:underline"
               >
                 Tree Work
-              </Link>{" "}
+              </SEOLink>{" "}
               page.
             </p>
           </div>

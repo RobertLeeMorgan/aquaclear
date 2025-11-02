@@ -1,10 +1,10 @@
 import canalRiver from "../assets/logos/canal-river.svg";
 import nrw from "../assets/logos/nrw.svg";
-import environment from "../assets/logos/environment-agency.webp";
-import glenEagles from "../assets/logos/gleneagles.webp";
-import naturalEngland from "../assets/logos/natural-england.webp";
-import rspb from "../assets/logos/rspb.webp";
-import olympics from "../assets/logos/olympic-games.webp";
+import environment from "../assets/logos/environment-agency.png";
+import glenEagles from "../assets/logos/gleneagles.png";
+import naturalEngland from "../assets/logos/natural-england.png";
+import rspb from "../assets/logos/rspb.png";
+import olympics from "../assets/logos/olympic-games.png";
 
 export interface Agency {
   title: string;

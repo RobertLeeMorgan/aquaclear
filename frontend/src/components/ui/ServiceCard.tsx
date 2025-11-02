@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import SEOlink from "./SeoLink";
 
 interface CardProps {
   title: string;
@@ -20,9 +20,9 @@ export default function ServiceCard(
                 <h3 className="font-semibold text-lg">{title}</h3>
                 <p className="text-sm text-base-content/80">{description}</p>
                 <div className="card-actions justify-end">
-                  <Link to={route} className="btn btn-sm btn-outline btn-primary mt-2">
+                  <SEOlink to={route} label={title} className="btn btn-sm btn-outline btn-primary mt-2">
                     Learn More
-                  </Link>
+                  </SEOlink>
                 </div>
               </div>
             </div>

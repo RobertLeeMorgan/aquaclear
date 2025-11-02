@@ -13,6 +13,10 @@ export default function MarkdownMessage({ children }: { children: string }) {
           const cleaned = pruneEmptyTextNodes(props.children);
           return <p>{linkifyChildren(cleaned)}</p>;
         },
+        a({ node, ...props }) {
+          const cleaned = pruneEmptyTextNodes(props.children);
+          return <a className="font-semibold text-primary cursor-pointer hover:underline">{linkifyChildren(cleaned)}</a>;
+        },
         ul({ node, ...props }) {
           const cleaned = pruneEmptyTextNodes(props.children);
           return <ul className="list-disc my-0">{cleaned}</ul>;

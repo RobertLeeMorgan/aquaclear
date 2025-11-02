@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import SEOLink from "../../ui/SeoLink";
 import { useState, useRef, useEffect } from "react";
 
 export default function MobileMenu({ label, links }: { label: string; links: { to: string; label: string }[] }) {
@@ -20,7 +20,7 @@ export default function MobileMenu({ label, links }: { label: string; links: { t
         <ul className="absolute left-0 mt-2 bg-base-100 border border-base-300 rounded-box shadow-lg p-2 z-50 w-56">
           {links.map((link) => (
             <li key={link.to}>
-              <Link to={link.to}>{link.label}</Link>
+              <SEOLink to={link.to}>{link.label}</SEOLink>
             </li>
           ))}
         </ul>

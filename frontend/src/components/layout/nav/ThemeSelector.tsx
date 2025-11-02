@@ -45,6 +45,7 @@ export default function ThemeSelector() {
 
       {/* Switch */}
       <input
+        id="theme"
         type="checkbox"
         className="toggle toggle-sm"
         checked={theme === "dark"}

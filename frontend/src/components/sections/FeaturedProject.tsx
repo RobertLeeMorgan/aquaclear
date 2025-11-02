@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import SEOLink from "../ui/SeoLink";
 import BeforeAfter from "../ui/BeforeAfter";
 
 export default function FeaturedProject() {
@@ -20,9 +20,9 @@ export default function FeaturedProject() {
             <strong>Minsmere Reserve</strong>, cutting invasive vegetation and
             improving water flow across key conservation areas.
           </p>
-          <Link to="/gallery/weed-reed-cutting" className="btn btn-primary">
+          <SEOLink to="/gallery/weed-reed-cutting" label="Weed/reed cutting gallery" className="btn btn-primary">
             View More Projects
-          </Link>
+          </SEOLink>
         </div>
       </div>
     </section>

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import SEOLink from "../ui/SeoLink";
 
 export default function CompanyOverview() {
     return (
@@ -23,9 +23,9 @@ export default function CompanyOverview() {
             </p>
 
             {/* Contact CTA */}
-            <Link to="/contact" className="btn btn-primary mt-4">
+            <SEOLink to="/contact" className="btn btn-primary mt-4">
               Contact for a Free Consultation
-            </Link>
+            </SEOLink>
           </div>
         </section>
     )

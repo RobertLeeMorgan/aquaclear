@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Toast } from "../components/ui/Toast";
+import PageHeader from "../components/layout/PageHeader";
 import { useContactForm } from "../components/hooks/useContactForm";
 import { contactSchema } from "../components/schemas/contactSchema";
 import type { ContactData } from "../components/schemas/contactSchema";
@@ -58,10 +59,7 @@ export default function ContactPage() {
       {/* Contact Form */}
       <div className="card w-full max-w-2xl shadow-2xl bg-base-100">
         <div className="card-body px-4 sm:px-8">
-          <h2 className="text-4xl text-primary font-bold text-center mb-4">
-            Contact Us
-          </h2>
-
+          <PageHeader title="Contact"/>
           <form className="space-y-4" onSubmit={handleSubmit}>
             {/* Full Name */}
             <div className="form-control">

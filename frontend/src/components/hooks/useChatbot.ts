@@ -23,15 +23,22 @@ export function useChatbot() {
         method: "GET",
         credentials: "include",
       });
-      if (!res.ok) {
-        console.warn("Failed to fetch history");
+
+      if (res.status === 401 || res.status === 403) {
+        console.log("No chat session — starting fresh");
+        setMessages([GREETING]);
         return;
       }
-      const data = await res.json();
 
+      if (!res.ok) {
+        console.warn("Failed to fetch history");
+        setMessages([GREETING]);
+        return;
+      }
+
+      const data = await res.json();
       if (Array.isArray(data.history)) {
         const history = data.history as Msg[];
-
         const hasGreeting =
           history.length > 0 && history[0].text === GREETING.text;
         setMessages(hasGreeting ? history : [GREETING, ...history]);
