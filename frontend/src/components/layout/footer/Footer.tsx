@@ -1,4 +1,4 @@
-import SEOLink  from "../../ui/SeoLink";
+import SEOLink  from "../../ui/SEOLink";
 import { footerMenus } from "./footerMenus";
 import BusinessCard from "../../sections/BusinessCard";
 

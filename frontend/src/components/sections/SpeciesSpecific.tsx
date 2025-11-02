@@ -1,4 +1,4 @@
-import SEOLink from "../ui/SeoLink";
+import SEOLink from "../ui/SEOLink";
 import { FaExclamationTriangle, FaCheckCircle } from "react-icons/fa";
 import BeforeAfter from "../../components/ui/BeforeAfter";
 

@@ -1,4 +1,4 @@
-import SEOLink from "../../ui/SeoLink";
+import SEOLink from "../../ui/SEOLink";
 import DesktopMenu from "./DesktopMenu";
 import MobileMenu from "./MobileMenu";
 import ThemeSelector from "./ThemeSelector";

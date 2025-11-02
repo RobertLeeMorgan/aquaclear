@@ -1,4 +1,4 @@
-import SEOLink from "../../ui/SeoLink";
+import SEOLink from "../../ui/SEOLink";
 import { useState, useRef, useEffect } from "react";
 
 export default function MobileMenu({ label, links }: { label: string; links: { to: string; label: string }[] }) {

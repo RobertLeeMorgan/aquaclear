@@ -1,4 +1,4 @@
-import SEOLink from "../ui/SeoLink";
+import SEOLink from "../ui/SEOLink";
 
 export default function CompanyOverview() {
     return (

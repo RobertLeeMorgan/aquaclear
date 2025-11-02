@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import SEOLink from "../ui/SEOLink";
 
 interface ContactProps {
   title: string;
@@ -47,21 +47,21 @@ export default function ContactUsCard({
         <p className="text-base-content/80 max-w-2xl mx-auto leading-relaxed">
           {text}
           {linkto && url && (
-            <Link
+            <SEOLink
               to={url}
               className="text-primary font-semibold hover:underline"
             >
               {" "}
               {linkto}{" "}
-            </Link>
+            </SEOLink>
           )}
           {extension && extension}.
         </p>
       </div>
       <div className="flex justify-center gap-4">
-        <Link to="/contact" className="btn btn-primary mt-2">
+        <SEOLink to="/contact" className="btn btn-primary mt-2">
           Contact Us
-        </Link>
+        </SEOLink>
         {silting && (
           <button className="btn btn-outline mt-2" onClick={handleDownload}>
             Download Brochure (PDF)

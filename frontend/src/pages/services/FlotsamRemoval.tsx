@@ -1,6 +1,6 @@
 import ContactUsCard from "../../components/common/ContactUsCard";
 import PageHeader from "../../components/layout/PageHeader";
-import SEOLink from "../../components/ui/SeoLink";
+import SEOLink from "../../components/ui/SEOLink";
 
 export default function FlotsamRemoval() {
   return (

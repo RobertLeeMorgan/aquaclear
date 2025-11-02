@@ -1,4 +1,4 @@
-import SEOlink from "./SeoLink";
+import SEOlink from "./SEOLink";
 
 interface CardProps {
   title: string;

@@ -1,4 +1,4 @@
-import SEOLink from "../ui/SeoLink";
+import SEOLink from "../ui/SEOLink";
 import BeforeAfter from "../ui/BeforeAfter";
 
 export default function FeaturedProject() {

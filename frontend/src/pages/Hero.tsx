@@ -1,4 +1,4 @@
-import SEOLink from "../components/ui/SeoLink";
+import SEOLink from "../components/ui/SEOLink";
 
 export default function Hero() {
   return (
