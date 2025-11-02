@@ -15,7 +15,7 @@ export default function MobileMenu({ label, links }: { label: string; links: { t
 
   return (
     <li ref={ref} className="relative">
-      <a onClick={() => setOpen(!open)}>{label}</a>
+      <div onClick={() => setOpen(!open)}>{label}</div>
       {open && (
         <ul className="absolute left-0 mt-2 bg-base-100 border border-base-300 rounded-box shadow-lg p-2 z-50 w-56">
           {links.map((link) => (
