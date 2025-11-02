@@ -13,7 +13,7 @@ export async function getContextForMessage(
 ) {
   try {
     const sectionFilters = getSectionFilter(message);
-
+console.log(sectionFilters)
     const aiAskedForFollowUp =
       /would you like|want to learn more|see more|need more info|link/i.test(
         lastAssistantMsg
@@ -23,7 +23,7 @@ export async function getContextForMessage(
 
     const { data, error } = await supabase.rpc("match_site_documents", {
       query_embedding: queryEmbedding,
-      match_count: 3,
+      match_count: 6,
       section_filters: sectionFilters.length ? sectionFilters : null,
     });
 

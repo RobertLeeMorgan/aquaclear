@@ -18,7 +18,7 @@ export default function getSectionFilter(message: string): string[] {
     sections.push("contact");
 
   if (
-    /\b(truxor|amphibious harvester|grab bucket|grip rake|excavator arm|reed rake|silt pumping tool)\b/.test(
+    /\b(truxor|amphibious harvester|grab bucket|grip rake|excavator arm|reed rake|silt pumping tool|equipment|machine)\b/.test(
       lower
     )
   )

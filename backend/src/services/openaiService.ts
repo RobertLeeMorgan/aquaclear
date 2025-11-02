@@ -32,6 +32,8 @@ export async function getChatReply(
 
   messagesForGPT.push({ role: "user", content: message });
 
+  // console.log("GPT payload:", JSON.stringify(messagesForGPT, null, 2));
+
   try {
     const response = await openai.chat.completions.create({
       model: "gpt-4o-mini",
@@ -39,22 +41,35 @@ export async function getChatReply(
     });
 
     const reply = response.choices?.[0]?.message?.content;
+
+    // console.log(reply)
+
     if (!reply) {
-      throw new OpenAIError("Empty reply from OpenAI", "I couldn't generate a response right now");
+      throw new OpenAIError(
+        "Empty reply from OpenAI",
+        "I couldn't generate a response right now"
+      );
     }
     return reply;
-
   } catch (err: any) {
     console.error("OpenAI request failed:", err);
 
     if (err?.response?.status === 429) {
-      throw new OpenAIError("OpenAI rate limit exceeded", "The AI is receiving too many requests right now");
+      throw new OpenAIError(
+        "OpenAI rate limit exceeded",
+        "The AI is receiving too many requests right now"
+      );
     }
 
     if (err?.response?.status >= 500) {
-      throw new OpenAIError("OpenAI internal error", "The AI service is temporarily unavailable");
+      throw new OpenAIError(
+        "OpenAI internal error",
+        "The AI service is temporarily unavailable"
+      );
     }
 
-    throw new OpenAIError(err?.message ?? "Failed to fetch response from OpenAI");
+    throw new OpenAIError(
+      err?.message ?? "Failed to fetch response from OpenAI"
+    );
   }
 }

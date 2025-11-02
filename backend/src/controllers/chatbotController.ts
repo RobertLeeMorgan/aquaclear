@@ -3,7 +3,6 @@ import { supabase } from "../supabaseClient.js";
 import { getChatReply, Message } from "../services/openaiService.js";
 import { getContextForMessage } from "../services/contextService.js";
 import { OpenAI } from "openai";
-import getSectionFilter from "../utils/sectionFilter.js";
 import getUserSession from "../utils/cookie.js";
 import getRecentMessages from "../utils/recentMessages.js";
 import {
