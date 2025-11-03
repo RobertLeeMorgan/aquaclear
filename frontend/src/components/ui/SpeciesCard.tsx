@@ -51,11 +51,11 @@ export default function SpeciesCard({ species }: { species: Species }) {
         {(species.description.length > 80 ||
           species.identification.length > 100) && (
           <button
-          aria-label="Read more"
+          aria-label={`Read more about ${species.commonName}`}
             onClick={() => setExpanded((e) => !e)}
             className="text-primary text-sm mt-1 font-medium hover:underline"
           >
-            {expanded ? "Show less" : "Read more"}
+            {expanded ? "Show less" : "Read more" }
           </button>
         )}
       </div>

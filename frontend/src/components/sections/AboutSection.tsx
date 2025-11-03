@@ -14,7 +14,7 @@ export default function AboutSection() {
             and private estates.
           </p>
           <a href="/about" aria-label="About link" className="btn btn-outline btn-primary">
-            Learn More
+            Learn More <span className="sr-only"> about Aquaclear</span>
           </a>
         </div>
 

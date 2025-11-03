@@ -1,18 +1,18 @@
 import { Link } from "react-router-dom";
 
-interface SmartLinkProps {
+interface SEOLinkProps {
   to: string;
   className?: string;
   label?: string;
   children: React.ReactNode;
 }
 
-export default function SmartLink({
+export default function SEOLink({
   to,
   className,
   label,
   children,
-}: SmartLinkProps) {
+}: SEOLinkProps) {
   return (
     <Link
       {...({ href: to } as any)}

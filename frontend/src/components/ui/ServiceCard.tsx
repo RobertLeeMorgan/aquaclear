@@ -38,6 +38,7 @@ export default function ServiceCard({
             label={`Learn more about ${title}`}
           >
             Learn More
+            <span className="sr-only"> about {title}</span>
           </SEOlink>
         </div>
       </div>
