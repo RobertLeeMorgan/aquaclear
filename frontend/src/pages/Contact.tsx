@@ -169,6 +169,7 @@ export default function ContactPage() {
                 type="submit"
                 className="btn btn-primary w-full flex items-center justify-center gap-2"
                 disabled={loading}
+                aria-label="Form submit"
               >
                 {loading ? (
                   <>

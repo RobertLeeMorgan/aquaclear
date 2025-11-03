@@ -30,6 +30,7 @@ export default function ChatInput({
       <textarea
         id="chatbot"
         ref={textareaRef}
+        aria-label="Chatbot input"
         placeholder="Type a message..."
         className="textarea textarea-bordered w-full resize-none overflow-hidden leading-snug"
         rows={1}

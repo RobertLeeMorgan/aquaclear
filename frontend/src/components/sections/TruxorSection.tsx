@@ -48,6 +48,7 @@ export default function TruxorSection() {
               <a
                 href="https://www.truxoruk.co.uk"
                 target="_blank"
+                aria-label="Truxor UK"
                 rel="noopener noreferrer"
                 className="btn btn-outline btn-primary"
               >

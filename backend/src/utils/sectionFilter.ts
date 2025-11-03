@@ -24,6 +24,11 @@ export default function getSectionFilter(message: string): string[] {
   )
     sections.push("truxor");
 
+if (
+    /\b(clients|testimonial|review|feedback|customer|worked for)\b/.test(lower)
+  )
+    sections.push("clients");
+
   if (
     /\b(dredge|pump|silt|excavation|ditching|habitat creation|reed|weed|flotsam|tree work|water management|lake maintenance|pond clearance|vegetation removal)\b/.test(
       lower

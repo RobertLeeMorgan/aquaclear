@@ -2,13 +2,22 @@ import SEOLink from "../ui/SEOLink";
 
 export default function Hero() {
   return (
-    <section
-      className="hero min-h-[80vh] bg-cover bg-center relative"
-      style={{ backgroundImage: `url("/images/truxor/banner.webp")` }}
-    >
-      <div className="hero-overlay bg-black/50"></div>
-      <div className="hero-content text-center text-neutral-content">
-        <div className="max-w-2xl">
+    <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
+      <picture>
+        <source srcSet="/images/truxor/banner.webp" type="image/webp" />
+        <img
+          src="/images/truxor/banner.webp"
+          alt="Truxor amphibious machine clearing aquatic weeds"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+      </picture>
+
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black/50"></div>
+
+      {/* Hero content */}
+      <div className="relative z-10 text-center text-neutral-content px-4">
+        <div className="max-w-2xl mx-auto">
           <h1 className="text-5xl font-bold mb-4">
             Clear Water. Healthy Habitats. Expert Care.
           </h1>

@@ -22,7 +22,7 @@ export default function SiltMethods() {
         <div className="space-y-4">
           {/* Dewatering Bags */}
           <div className="collapse collapse-arrow bg-base-100 border border-base-300">
-            <input type="radio" name="silt-methods" />
+            <input type="radio" name="silt-methods" aria-label="Dewatering bags" />
             <div className="collapse-title text-xl font-semibold text-primary">
               Dewatering Bags
             </div>
@@ -39,6 +39,7 @@ export default function SiltMethods() {
                 src="/images/services/siltbags.webp"
                 alt="Dewatering bags setup"
                 className="rounded-xl shadow-md object-cover w-full h-48 max-w-2xl sm:h-64 justify-self-center"
+                loading="lazy"
               />
               <ul className="list-disc list-inside text-sm text-base-content/70">
                 <li>Half size: 5m × 6m</li>
@@ -49,7 +50,7 @@ export default function SiltMethods() {
 
           {/* Geotextile Barriers */}
           <div className="collapse collapse-arrow bg-base-100 border border-base-300">
-            <input type="radio" name="silt-methods" />
+            <input type="radio" name="silt-methods" aria-label="Geotextile barriers" />
             <div className="collapse-title text-xl font-semibold text-primary">
               Geotextile Barriers (Permeable Membranes)
             </div>
@@ -66,13 +67,14 @@ export default function SiltMethods() {
                 src="/images/services/siltbarrier.webp"
                 alt="Geotextile barrier setup"
                 className="rounded-xl shadow-md object-cover w-full h-48 max-w-2xl sm:h-64 justify-self-center"
+                loading="lazy"
               />
             </div>
           </div>
 
           {/* Soil Bunds */}
           <div className="collapse collapse-arrow bg-base-100 border border-base-300">
-            <input type="radio" name="silt-methods" />
+            <input type="radio" name="silt-methods" aria-label="Soil bunds"/>
             <div className="collapse-title text-xl font-semibold text-primary">
               Soil Bunds
             </div>
@@ -89,6 +91,7 @@ export default function SiltMethods() {
                 src="/images/services/siltbunds.webp"
                 alt="Soil bund containment"
                 className="rounded-xl shadow-md object-cover w-full h-48 max-w-2xl sm:h-64 justify-self-center"
+                loading="lazy"
               />
             </div>
           </div>

@@ -1,11 +1,11 @@
+import PageHeader from "../components/layout/PageHeader";
+
 export default function Terms() {
   return (
     <div className="min-h-screen bg-base-200 py-16 px-4 sm:px-8">
       <div className="max-w-5xl mx-auto">
         {/* Header */}
-        <header className="text-center mb-12">
-          <h1 className="text-5xl font-bold text-primary mb-3">Terms of Use</h1>
-        </header>
+        <PageHeader title="Terms"/>
 
         {/* Main Card */}
         <main className="card bg-base-100 shadow-2xl border border-base-300">

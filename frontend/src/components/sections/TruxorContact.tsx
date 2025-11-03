@@ -9,6 +9,7 @@ export default function TruxorContact() {
             <a
               href="https://www.truxoruk.co.uk"
               target="_blank"
+              aria-label="Truxor UK"
               rel="noopener noreferrer"
               className="link link-primary"
             >
@@ -17,13 +18,13 @@ export default function TruxorContact() {
           </p>
           <p>
             <strong>Email:</strong>{" "}
-            <a href="mailto:info@truxoruk.co.uk" className="link link-primary">
+            <a href="mailto:info@truxoruk.co.uk" className="link link-primary" aria-label="Truxor email">
               info@truxoruk.co.uk
             </a>
           </p>
           <p>
             <strong>Telephone:</strong>{" "}
-            <a href="tel:07775672567" className="link link-primary">
+            <a href="tel:07775672567" className="link link-primary" aria-label="Truxor telephone">
               07775 672567
             </a>
           </p>

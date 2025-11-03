@@ -19,6 +19,7 @@ export default function SiteSpecificCarousel() {
                 src={site.image}
                 alt={site.title}
                 className="w-full h-40 object-cover"
+                loading="lazy"
               />
             </figure>
             <div className="card-body px-4 sm:px-8 py-6">

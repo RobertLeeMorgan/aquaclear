@@ -63,7 +63,7 @@ export default function ContactUsCard({
           Contact Us
         </SEOLink>
         {silting && (
-          <button className="btn btn-outline mt-2" onClick={handleDownload}>
+          <button aria-label="Download brochure" className="btn btn-outline mt-2" onClick={handleDownload}>
             Download Brochure (PDF)
           </button>
         )}

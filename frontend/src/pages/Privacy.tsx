@@ -1,13 +1,11 @@
+import PageHeader from "../components/layout/PageHeader";
+
 export default function Privacy() {
   return (
     <div className="py-16 px-4 sm:px-8">
       <div className="max-w-5xl mx-auto">
         {/* Header */}
-        <header className="text-center mb-12">
-          <h1 className="text-5xl font-bold text-primary mb-3">
-            Privacy Policy
-          </h1>
-        </header>
+        <PageHeader title="Privacy Policy"/>
 
         {/* Main Card */}
         <main className="card bg-base-100 shadow-2xl border border-base-300">

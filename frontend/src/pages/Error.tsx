@@ -38,7 +38,7 @@ export default function Error() {
           </div>
 
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/home" className="btn btn-outline">
+            <a href="/home" className="btn btn-outline" aria-label="Home">
               Back to Home
             </a>
           </div>

@@ -3,7 +3,9 @@ import Navbar from "../components/layout/nav/NavBar";
 import Footer from "../components/layout/footer/Footer";
 import PageContainer from "../components/layout/PageContainer";
 import ScrollToTop from "../components/common/ScrollToTop";
-import Chatbot from "../components/layout/chatbot/Chatbot";
+import { lazy, Suspense } from "react";
+
+const Chatbot = lazy(() => import("../components/layout/chatbot/Chatbot"));
 
 export default function RootLayout() {
   return (
@@ -13,7 +15,9 @@ export default function RootLayout() {
       <PageContainer>
         <Outlet />
       </PageContainer>
-      <Chatbot />
+      <Suspense fallback={null}>
+        <Chatbot />
+      </Suspense>
       <Footer />
     </>
   );

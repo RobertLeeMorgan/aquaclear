@@ -64,6 +64,7 @@ export default function Truxor() {
             target="_blank"
             rel="noopener noreferrer"
             className="btn btn-primary"
+            aria-label="Truxor UK"
           >
             Visit Truxor UK
           </a>

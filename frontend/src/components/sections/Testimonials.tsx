@@ -19,6 +19,7 @@ export default function Testimonials() {
                       type="radio"
                       name={`rating-${t.name}`}
                       className="mask mask-star-2 bg-yellow-400"
+                      aria-label={`rating-${t.name}`}
                       checked
                       readOnly
                     />

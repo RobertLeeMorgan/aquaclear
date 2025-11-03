@@ -11,7 +11,7 @@ export default function SpeciesSpecific() {
 
       {/* -------------------- Blanket Weed -------------------- */}
       <div className="collapse collapse-arrow join-item border border-base-300 bg-base-100 transition-all duration-300">
-        <input type="radio" name="weed-accordion" />
+        <input type="radio" name="weed-accordion" aria-label="Algae"/>
         <div className="collapse-title text-xl font-semibold text-primary">
           Blanket Weed (Algae) Removal and Control
         </div>
@@ -29,6 +29,7 @@ export default function SpeciesSpecific() {
               src="/images/weeds/algae.webp"
               alt="Blanket weed"
               className="rounded-2xl max-h-60 w-full object-cover mx-auto shadow-lg"
+              loading="lazy"
             />
           </div>
 
@@ -71,7 +72,7 @@ export default function SpeciesSpecific() {
 
       {/* -------------------- Bulrush & Bur-reed -------------------- */}
       <div className="collapse collapse-arrow join-item border border-base-300 bg-base-100 transition-all duration-300">
-        <input type="radio" name="weed-accordion" />
+        <input type="radio" name="weed-accordion" aria-label="Bulrush"/>
         <div className="collapse-title text-xl font-semibold text-primary">
           Bulrush and Bur-reed Cutting and Removal
         </div>
@@ -86,6 +87,7 @@ export default function SpeciesSpecific() {
               src="/images/weeds/bulrush.webp"
               alt="Bulrush"
               className="rounded-2xl max-h-60 w-full object-cover mx-auto shadow-lg"
+              loading="lazy"
             />
           </div>
 
@@ -126,7 +128,7 @@ export default function SpeciesSpecific() {
 
       {/* -------------------- Water Lily -------------------- */}
       <div className="collapse collapse-arrow join-item border border-base-300 bg-base-100 transition-all duration-300">
-        <input type="radio" name="weed-accordion" />
+        <input type="radio" name="weed-accordion" aria-label="Water lily" />
         <div className="collapse-title text-xl font-semibold text-primary">
           Water Lily Maintenance and Control
         </div>
@@ -156,7 +158,7 @@ export default function SpeciesSpecific() {
 
       {/* -------------------- Invasive Species -------------------- */}
       <div className="collapse collapse-arrow join-item border border-base-300 bg-base-100 transition-all duration-300">
-        <input type="radio" name="weed-accordion" />
+        <input type="radio" name="weed-accordion" aria-label="Invasive species" />
         <div className="collapse-title text-xl font-semibold text-primary">
           Invasive Species Removal and Control
         </div>
@@ -171,22 +173,26 @@ export default function SpeciesSpecific() {
               <img
                 src="/images/weeds/canadianpondweed.webp"
                 alt="Invasive species"
-                className="rounded-2xl max-h-60 w-full object-cover mx-auto shadow-lg "
+                className="rounded-2xl max-h-60 w-full object-cover mx-auto shadow-lg"
+                loading="lazy"
               />
               <img
                 src="/images/weeds/floatingpennywort.webp"
                 alt="Invasive species"
                 className="rounded-2xl max-h-60 h-full object-cover mx-auto shadow-lg hidden sm:block"
+                loading="lazy"
               />
               <img
                 src="/images/weeds/duckweed.webp"
                 alt="Invasive species"
                 className="rounded-2xl max-h-60 w-full object-cover mx-auto shadow-lg hidden sm:block"
+                loading="lazy"
               />
               <img
                 src="/images/weeds/horsetail.webp"
                 alt="Invasive species"
                 className="rounded-2xl max-h-60 w-full object-cover mx-auto shadow-lg hidden sm:block"
+                loading="lazy"
               />
             </div>
           </div>
