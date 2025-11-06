@@ -11,20 +11,23 @@ export function useSendMessage() {
       });
 
       if (!res.ok) {
-        let err: any = {};
+        let body: any = {};
         try {
-          err = await res.json();
+          body = await res.json();
         } catch {
-          err = { code: "UNKNOWN_ERROR", error: "Unknown error" };
+          body = {};
         }
 
+        const code = body.code ?? body.errorCode ?? body.status ?? "UNKNOWN_ERROR";
+        const friendly = body.friendly ?? body.friendlyMessage ?? body.message ?? body.error ?? null;
+
         const msg =
-          err.friendly ||
-          getFriendlyError(err.code) ||
+          friendly ||
+          getFriendlyError(code) ||
           "Something went wrong — please try again.";
 
         const e = new Error(msg);
-        (e as any).code = err.code || "UNKNOWN_ERROR";
+        (e as any).code = code ?? "UNKNOWN_ERROR";
         throw e;
       }
 

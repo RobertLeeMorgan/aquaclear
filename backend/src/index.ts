@@ -3,8 +3,8 @@ import cors from "cors";
 import chatbotRouter from "./routes/chatbot.js";
 import contactRouter from "./routes/contact.js";
 import helmet from "helmet";
-import { ErrorRequestHandler } from "express";
 import cookieParser from "cookie-parser";
+import {globalErrorHandler} from "./middleware/globalErrorHandler.js";
 
 // import dotenv from "dotenv";
 // dotenv.config();
@@ -42,14 +42,6 @@ app.get("/api/wakeup", (req, res) => {
 app.use((req, res) => {
   res.status(404).json({ error: "Route not found" });
 });
-
-const globalErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
-  console.error("Global error:", err);
-
-  res.status(500).json({
-    error: "Internal server error",
-  });
-};
 
 app.use(globalErrorHandler);
 

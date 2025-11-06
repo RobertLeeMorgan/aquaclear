@@ -1,10 +1,10 @@
-import { Request, Response } from "express";
+import { Request, Response, NextFunction } from "express";
 import {
   TransactionalEmailsApi,
   SendSmtpEmail,
-  TransactionalEmailsApiApiKeys,
-} from "@getbrevo/brevo";
+  TransactionalEmailsApiApiKeys,} from "@getbrevo/brevo";
 import { contactSchema } from "../schemas/contactSchema.js";
+import { AppError } from "../utils/errors.js";
 
 interface ContactFormData {
   name: string;
@@ -15,14 +15,18 @@ interface ContactFormData {
   message: string;
 }
 
-export async function handleContactForm(req: Request, res: Response) {
+export async function handleContactForm(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
   try {
-    // Validate with Zod
+    // Validate input using Zod
     const parseResult = contactSchema.safeParse(req.body);
     if (!parseResult.success) {
-      const firstError =
+      const message =
         parseResult.error.issues[0]?.message || "Invalid form input.";
-      return res.status(400).json({ error: firstError });
+      throw new AppError("VALIDATION_ERROR", message, "Invalid input provided.");
     }
 
     const { name, email, tel, postcode, source, message }: ContactFormData =
@@ -56,12 +60,10 @@ Source: ${source || "Not specified"}
 
 Message:
 ${message}`;
-
     mailPayload.replyTo = { email, name };
 
-    // Send email
+    // Send email via Brevo
     const response = await brevoClient.sendTransacEmail(mailPayload);
-
     console.log(
       "Contact form email sent successfully from:",
       email,
@@ -72,10 +74,20 @@ ${message}`;
     return res
       .status(200)
       .json({ success: true, message: "Message sent successfully" });
-  } catch (error) {
-    console.error("Error handling contact form:", error);
-    return res
-      .status(500)
-      .json({ error: "Failed to send message. Please try again later." });
+  } catch (err: any) {
+    console.error("Error handling contact form:", err);
+
+    // Forward the error to the global handler
+    if (err instanceof AppError) {
+      return next(err);
+    }
+
+    return next(
+      new AppError(
+        "SERVER_ERROR",
+        err.message || "Unexpected error",
+        "Failed to send message. Please try again later."
+      )
+    );
   }
 }

@@ -1,7 +1,7 @@
 import { OpenAI } from "openai";
 import { AQUACLEAR_SYSTEM_PROMPT } from "../config/aiPrompt.js";
 import type { ChatCompletionMessageParam } from "openai/resources/chat/completions.js";
-import { OpenAIError } from "../utils/errors.js";
+import { OpenAIError, RateLimitError } from "../utils/errors.js";
 
 export interface Message {
   role: "system" | "user" | "assistant";
@@ -55,7 +55,7 @@ export async function getChatReply(
     console.error("OpenAI request failed:", err);
 
     if (err?.response?.status === 429) {
-      throw new OpenAIError(
+      throw new RateLimitError(
         "OpenAI rate limit exceeded",
         "The AI is receiving too many requests right now"
       );

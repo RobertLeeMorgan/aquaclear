@@ -72,6 +72,7 @@ export default function ContactPage() {
                 type="text"
                 placeholder="John Smith"
                 className="input input-bordered w-full"
+                autoComplete="name"
                 required
               />
             </div>
@@ -87,6 +88,7 @@ export default function ContactPage() {
                 type="email"
                 placeholder="example@email.com"
                 className="input input-bordered w-full"
+                autoComplete="email"
                 required
               />
             </div>
@@ -102,6 +104,7 @@ export default function ContactPage() {
                 type="tel"
                 placeholder="01234 567890"
                 className="input input-bordered w-full"
+                autoComplete="tel"
                 required
               />
             </div>
@@ -119,6 +122,7 @@ export default function ContactPage() {
                 type="text"
                 placeholder="e.g. SW1A 1AA"
                 className="input input-bordered w-full"
+                autoComplete="postal-code"
                 required
               />
             </div>

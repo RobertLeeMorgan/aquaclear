@@ -2,7 +2,8 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import Contact from "../src/pages/Contact";
 import { vi, describe, test, beforeEach, expect } from "vitest";
-import '@testing-library/jest-dom';
+import "@testing-library/jest-dom";
+import { HelmetProvider } from "react-helmet-async";
 
 // Mock global fetch and alert
 global.fetch = vi.fn(() =>
@@ -20,9 +21,13 @@ describe("Contact Page", () => {
   });
 
   test("renders all form fields", () => {
-    render(<Contact />);
+    render(
+      <HelmetProvider>
+        <Contact />
+      </HelmetProvider>
+    );
 
-    expect(screen.getByText("Contact Us")).toBeInTheDocument();
+    expect(screen.getByText("Contact")).toBeInTheDocument(); // Match your PageHeader title
     expect(screen.getByLabelText("Full Name *")).toBeInTheDocument();
     expect(screen.getByLabelText("E-mail *")).toBeInTheDocument();
     expect(screen.getByLabelText("Tel *")).toBeInTheDocument();
@@ -32,7 +37,11 @@ describe("Contact Page", () => {
   });
 
   test("submits the form and shows success alert", async () => {
-    render(<Contact />);
+    render(
+      <HelmetProvider>
+        <Contact />
+      </HelmetProvider>
+    );
 
     // Fill form fields
     fireEvent.change(screen.getByLabelText("Full Name *"), {
@@ -54,10 +63,8 @@ describe("Contact Page", () => {
       target: { value: "Test message" },
     });
 
-    // Submit form using the button's closest form
-    fireEvent.submit(
-      screen.getByText("Send Message").closest("form")!
-    );
+    // Submit form
+    fireEvent.submit(screen.getByText("Send Message").closest("form")!);
 
     await waitFor(() => {
       expect(global.fetch).toHaveBeenCalledWith(
@@ -67,7 +74,10 @@ describe("Contact Page", () => {
           headers: { "Content-Type": "application/json" },
         })
       );
-      expect(global.alert).toHaveBeenCalledWith("Message sent!");
     });
+
+    expect(
+      await screen.findByText("Message sent successfully.")
+    ).toBeInTheDocument();
   });
 });

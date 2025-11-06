@@ -32,28 +32,29 @@ export default function Chatbot() {
           onClick={() => setOpen(false)}
         />
       )}
+      {open && (
+        <div
+          className={`fixed top-0 right-0 h-full w-80 sm:w-96 bg-base-200 shadow-lg rounded-l-xl z-50 transform transition-transform duration-300 flex flex-col justify-between px-4 pb-4 ${
+            open ? "translate-x-0" : "translate-x-full"
+          }`}
+        >
+          <div className="flex items-center justify-between p-4 border-b border-base-300 mb-4">
+            <h2 className="font-semibold text-lg">AquaclearBot</h2>
+            <button onClick={() => setOpen(false)} aria-label="Close Chatbot">
+              <FaTimes className="w-5 h-5 text-base-content" />
+            </button>
+          </div>
 
-      <div
-        className={`fixed top-0 right-0 h-full w-80 sm:w-96 bg-base-200 shadow-lg rounded-l-xl z-50 transform transition-transform duration-300 flex flex-col justify-between px-4 pb-4 ${
-          open ? "translate-x-0" : "translate-x-full"
-        }`}
-      >
-        <div className="flex items-center justify-between p-4 border-b border-base-300 mb-4">
-          <h2 className="font-semibold text-lg">AquaclearBot</h2>
-          <button onClick={() => setOpen(false)} aria-label="Close Chatbot">
-            <FaTimes className="w-5 h-5 text-base-content" />
-          </button>
+          <ChatMessages messages={messages} messagesEndRef={messagesEndRef} />
+
+          <ChatInput
+            input={input}
+            setInput={setInput}
+            sendMessage={sendMessage}
+            disabled={messages.some((m) => m.text === "loading")}
+          />
         </div>
-
-        <ChatMessages messages={messages} messagesEndRef={messagesEndRef} />
-
-        <ChatInput
-          input={input}
-          setInput={setInput}
-          sendMessage={sendMessage}
-          disabled={messages.some((m) => m.text === "loading")}
-        />
-      </div>
+      )}
     </>
   );
 }

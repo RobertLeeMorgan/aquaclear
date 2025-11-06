@@ -3,7 +3,7 @@ import { limiter } from "../middleware/rateLimiter.js";
 import { chatbotSchema } from "../schemas/chatbotSchema.js";
 import { handleChatbot } from "../controllers/chatbotController.js";
 import { supabase } from "../supabaseClient.js";
-import { AppError } from "../utils/errors.js";
+import { DatabaseError, ValidationError } from "../utils/errors.js";
 
 const router = express.Router();
 
@@ -14,17 +14,17 @@ router.post("/chatbot", async (req: Request, res: Response, next: NextFunction) 
     const parsed = chatbotSchema.safeParse(req.body);
     if (!parsed.success) {
       const message = parsed.error.issues.map((i) => i.message).join(", ");
-      throw new AppError("VALIDATION_ERROR", message, "Invalid input provided.");
+      throw new ValidationError(message, "Invalid input provided.");
     }
 
     req.body = parsed.data;
-    await handleChatbot(req, res);
+    await handleChatbot(req, res, next);
   } catch (err) {
     next(err);
   }
 });
 
-router.get("/chatbot/history", async (req: Request, res: Response, next: NextFunction) => {
+router.get("/history", async (req: Request, res: Response, next: NextFunction) => {
   try {
     const userId = req.cookies?.user_id as string | undefined;
     if (!userId) {
@@ -39,8 +39,7 @@ router.get("/chatbot/history", async (req: Request, res: Response, next: NextFun
       .limit(100);
 
     if (error) {
-      throw new AppError(
-        "SUPABASE_ERROR",
+      throw new DatabaseError(
         error.message,
         "Failed to load your chat history. Please try again."
       );

@@ -2,7 +2,7 @@ import { supabase } from "../supabaseClient.js";
 import isVagueMessage from "../utils/vagueMessage.js";
 import getSectionFilter from "../utils/sectionFilter.js";
 import { OpenAI } from "openai";
-import { AppError } from "../utils/errors.js";
+import { DatabaseError, ContextError, AppError } from "../utils/errors.js";
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
@@ -13,7 +13,7 @@ export async function getContextForMessage(
 ) {
   try {
     const sectionFilters = getSectionFilter(message);
-console.log(sectionFilters)
+    console.log(sectionFilters);
     const aiAskedForFollowUp =
       /would you like|want to learn more|see more|need more info|link/i.test(
         lastAssistantMsg
@@ -28,10 +28,9 @@ console.log(sectionFilters)
     });
 
     if (error) {
-      throw new AppError(
-        "SUPABASE_VECTOR_ERROR",
+      throw new DatabaseError(
         error.message || "Vector search failed",
-        "Failed to fetch related site context."
+        "Failed to connect to the database."
       );
     }
 
@@ -48,9 +47,8 @@ URL: ${c.page_url ?? "N/A"}`
       .join("\n\n---\n\n");
   } catch (err) {
     if (err instanceof AppError) throw err;
-    throw new AppError(
-      "CONTEXT_GENERATION_ERROR",
-      (err as Error).message,
+    throw new ContextError(
+      (err as Error).message || "Context retrieval failed",
       "Failed to prepare context for your message."
     );
   }
