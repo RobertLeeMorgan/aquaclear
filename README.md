@@ -34,6 +34,7 @@ The platform features an **AI-powered client assistant** with **persistent chat 
 
 ## 🏗️ Project Architecture
 
+```
 aquaclear/
 ├── frontend/                     # React + TypeScript + Tailwind frontend
 │   ├── src/
@@ -60,6 +61,7 @@ aquaclear/
 │
 ├── docker-compose.yml            # Orchestrates frontend, backend, and database
 └── README.md
+```
 
 ---
 
