@@ -32,6 +32,37 @@ The platform features an **AI-powered client assistant** with **persistent chat 
 
 ---
 
+## 🏗️ Project Architecture
+
+aquaclear/
+├── frontend/                     # React + TypeScript + Tailwind frontend
+│   ├── src/
+│   │   ├── components/           # Reusable UI components
+│   │   ├── pages/                # Route-based views (React Router)
+│   │   ├── hooks/                # Custom hooks (TanStack Query, etc.)
+│   │   ├── utils/                # Helpers and constants
+│   │   └── main.tsx              # Frontend entry point
+│   ├── Dockerfile                # Frontend container configuration
+│   └── package.json
+│
+├── backend/                      # Node.js + Express + TypeScript backend
+│   ├── src/
+│   │   ├── routes/               # API route definitions
+│   │   ├── controllers/          # Request handlers and logic
+│   │   ├── services/             # OpenAI, Supabase, Brevo integrations
+│   │   ├── utils/                # Zod validation, error handling, helpers
+│   │   ├── db/                   # Supabase client & pgvector setup
+│   │   └── index.ts              # Server entry point
+│   ├── tests/                    # Jest + Supertest tests with central mocks
+│   ├── Dockerfile                # Backend container configuration
+│   ├── .env.example              # Required environment variables
+│   └── package.json
+│
+├── docker-compose.yml            # Orchestrates frontend, backend, and database
+└── README.md
+
+---
+
 ## ⚙️ Setup & Local Development
 
 ### 1. Clone the repository
@@ -58,7 +89,16 @@ BREVO_SENDER_NAME=your_sender_name
 ```
 (The frontend typically does not require a .env for local dev unless using environment-specific API endpoints.)
 
-4. Run locally (development)
+4. 🐳 Run with Docker
+To run both frontend and backend with Docker Compose:
+
+```bash
+docker-compose up --build
+```
+⚠️ Keep the dotenv lines commented out in the backend when running with Docker,
+as environment variables are passed through the container environment.
+
+To Run locally (development)
 In backend/src/index.ts and backend/src/supabaseClient.ts,
 uncomment the dotenv config lines to enable local .env loading.
 
@@ -72,14 +112,8 @@ Run the frontend in another terminal:
 cd frontend
 npm run dev
 ```
-🐳 Run with Docker
-To run both frontend and backend with Docker Compose:
 
-```bash
-docker-compose up --build
-```
-⚠️ Keep the dotenv lines commented out in the backend when running with Docker,
-as environment variables are passed through the container environment.
+---
 
 ## 🧪 Testing
 Backend tests
@@ -95,9 +129,13 @@ Backend: Centralized Jest + Supertest mocking for API and integration tests
 
 Frontend: Vitest and React Testing Library for UI and interaction tests
 
+---
+
 📦 Deployment
 Deployed on Render using a full CI/CD pipeline.
 Each push to the main branch triggers automatic builds and deployments of both frontend and backend Docker containers.
+
+---
 
 🧾 License
 Private project © Aquaclear Water Management
