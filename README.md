@@ -1,12 +1,11 @@
-# Aquaclear Water Management – AI-Enhanced Web Platform
+# 💧 Aquaclear Water Management – AI-Enhanced Web Platform
 
 A **modern, Dockerized web platform** built for **Aquaclear Water Management**, a UK-based environmental services company.  
 The platform features an **AI-powered client assistant** with **persistent chat memory**, **context-aware RAG retrieval** (via OpenAI embeddings, pgvector, and section filtering), and a **professional, interactive frontend** designed for smooth client engagement across the UK.
 
 ---
 
-### 🌐 Live Demo  
-👉 [https://www.aquaclear.onrender.com](https://www.aquaclear.onrender.com)
+### 🌐 Live Demo: [https://www.aquaclear.onrender.com](https://www.aquaclear.onrender.com)
 
 ---
 
@@ -82,7 +81,7 @@ docker-compose up --build
 ⚠️ Keep the dotenv lines commented out in the backend when running with Docker,
 as environment variables are passed through the container environment.
 
-🧪 Testing
+## 🧪 Testing
 Backend tests
 ```bash
 npm test
