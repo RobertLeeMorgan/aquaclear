@@ -3,7 +3,7 @@ import ChatInput from "./ChatInput";
 import ChatbotIcon from "./ChatbotIcon";
 import { useState, useEffect } from "react";
 import { FaTimes } from "react-icons/fa";
-import { useChatbot } from "../../hooks/useChatbot";
+import { useChatbot } from "../../../hooks/useChatbot";
 
 export default function Chatbot() {
   const [open, setOpen] = useState(false);

@@ -103,9 +103,13 @@ function getErrorMessage(error: any) {
   }
 
   if (typeof error === "object" && error !== null) {
-    return error.friendly ?? error.message ?? error.error ?? "Something went wrong — please try again shortly.";
+    return (
+      error.friendly ??
+      error.message ??
+      error.error ??
+      "Something went wrong — please try again shortly."
+    );
   }
 
   return String(error);
 }
-

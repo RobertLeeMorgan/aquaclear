@@ -33,7 +33,7 @@ app.set("trust proxy", 1);
 
 app.use("/api", contactRouter);
 
-app.use("/api", chatbotRouter);
+app.use("/api/chatbot", chatbotRouter);
 
 app.get("/api/wakeup", (req, res) => {
   res.status(200).send("Aquaclear API is running!");

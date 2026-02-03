@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { Toast } from "../components/ui/Toast";
 import PageHeader from "../components/layout/PageHeader";
-import { useContactForm } from "../components/hooks/useContactForm";
-import { contactSchema } from "../components/schemas/contactSchema";
-import type { ContactData } from "../components/schemas/contactSchema";
+import { useContactForm } from "../hooks/useContactForm";
+import { contactSchema } from "../schemas/contactSchema";
+import type { ContactData } from "../schemas/contactSchema";
 
 export default function ContactPage() {
   const { loading, toast, setToast, submitContact } = useContactForm();
@@ -39,7 +39,7 @@ export default function ContactPage() {
     };
 
     const result = contactSchema.safeParse(data);
-    
+
     if (!result.success) {
       const firstError = result.error.issues[0]?.message;
       setToast({ type: "error", message: firstError || "Invalid input." });
@@ -59,7 +59,7 @@ export default function ContactPage() {
       {/* Contact Form */}
       <div className="card w-full max-w-2xl shadow-2xl bg-base-100">
         <div className="card-body px-4 sm:px-8">
-          <PageHeader title="Contact"/>
+          <PageHeader title="Contact" />
           <form className="space-y-4" onSubmit={handleSubmit}>
             {/* Full Name */}
             <div className="form-control">

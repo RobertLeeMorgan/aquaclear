@@ -1,6 +1,6 @@
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import useLinkify from "../../hooks/useLinkify";
+import useLinkify from "../../../hooks/useLinkify";
 
 export default function MarkdownMessage({ children }: { children: string }) {
   const { linkifyChildren, pruneEmptyTextNodes } = useLinkify();
@@ -15,7 +15,11 @@ export default function MarkdownMessage({ children }: { children: string }) {
         },
         a({ node, ...props }) {
           const cleaned = pruneEmptyTextNodes(props.children);
-          return <a className="font-semibold text-primary cursor-pointer hover:underline">{linkifyChildren(cleaned)}</a>;
+          return (
+            <a className="font-semibold text-primary cursor-pointer hover:underline">
+              {linkifyChildren(cleaned)}
+            </a>
+          );
         },
         ul({ node, ...props }) {
           const cleaned = pruneEmptyTextNodes(props.children);
@@ -27,19 +31,33 @@ export default function MarkdownMessage({ children }: { children: string }) {
         },
         li({ node, ...props }) {
           const cleaned = pruneEmptyTextNodes(props.children);
-          return <li className="ml-4 mb-4 list-disc">{linkifyChildren(cleaned)}</li>;
+          return (
+            <li className="ml-4 mb-4 list-disc">{linkifyChildren(cleaned)}</li>
+          );
         },
         h1({ node, ...props }) {
           const cleaned = pruneEmptyTextNodes(props.children);
-          return <h1 className="text-lg font-semibold">{linkifyChildren(cleaned)}</h1>;
+          return (
+            <h1 className="text-lg font-semibold">
+              {linkifyChildren(cleaned)}
+            </h1>
+          );
         },
         h2({ node, ...props }) {
           const cleaned = pruneEmptyTextNodes(props.children);
-          return <h2 className="text-base font-semibold">{linkifyChildren(cleaned)}</h2>;
+          return (
+            <h2 className="text-base font-semibold">
+              {linkifyChildren(cleaned)}
+            </h2>
+          );
         },
-         h3({ node, ...props }) {
+        h3({ node, ...props }) {
           const cleaned = pruneEmptyTextNodes(props.children);
-          return <h2 className="text-base font-semibold">{linkifyChildren(cleaned)}</h2>;
+          return (
+            <h2 className="text-base font-semibold">
+              {linkifyChildren(cleaned)}
+            </h2>
+          );
         },
         strong({ node, ...props }) {
           const cleaned = pruneEmptyTextNodes(props.children);
