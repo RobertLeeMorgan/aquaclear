@@ -1,5 +1,5 @@
 import fs from "fs";
-import { parse } from "csv-parse";
+// import { parse } from "csv-parse";
 
 const inputPath = "./src/chunks.csv";
 const outputPath = "./src/chunks.json";
@@ -28,7 +28,7 @@ async function run() {
 
       fs.writeFileSync(outputPath, JSON.stringify(cleaned, null, 2));
 
-      console.log(`✅ Converted ${cleaned.length} rows to JSON`);
+      console.log(`Converted ${cleaned.length} rows to JSON`);
     }
   );
 }
