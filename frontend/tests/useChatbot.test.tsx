@@ -1,7 +1,7 @@
-// tests/useChatbot.test.ts
 import { vi, describe, it, expect, beforeEach } from "vitest";
 import { renderHook, act } from "@testing-library/react";
-import { useChatbot, Msg } from "../src/hooks/useChatbot";
+import { useChatbot } from "../src/hooks/useChatbot";
+import type { Msg } from "../src/hooks/useChatbot";
 import * as sendMessageHook from "../src/hooks/useSendMessage";
 import * as chatSchema from "../src/schemas/chatSchema";
 import * as getErrorMsg from "../src/utils/getErrorMessage";
@@ -39,7 +39,7 @@ describe("useChatbot hook", () => {
     vi.spyOn(chatSchema, "validateChatInput").mockImplementation((v) => v);
 
     // Mock getErrorMessage
-    vi.spyOn(getErrorMsg, "default").mockImplementation((e) => "error-message");
+    vi.spyOn(getErrorMsg, "default").mockImplementation(() => "error-message");
 
     // Mock localStorage
     vi.stubGlobal("localStorage", {
@@ -77,7 +77,7 @@ describe("useChatbot hook", () => {
 
     act(() => result.current.sendMessage());
 
-    expect(result.current.messages.length).toBe(3); // GREETING + user + bot
+    expect(result.current.messages.length).toBe(3);
     expect(result.current.messages[1]).toEqual({
       id: "random-id",
       role: "user",

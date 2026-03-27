@@ -1,6 +1,4 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { persistQueryClient } from "@tanstack/react-query-persist-client";
-import { createAsyncStoragePersister } from "@tanstack/query-async-storage-persister";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -24,17 +22,6 @@ import Excavation from "./pages/services/Excavation";
 import WeedIdentification from "./pages/resources/WeedIdentification.tsx";
 
 const queryClient = new QueryClient();
-
-if (typeof window !== "undefined") {
-  const persister = createAsyncStoragePersister({
-    storage: window.localStorage,
-  });
-
-  persistQueryClient({
-    queryClient,
-    persister,
-  });
-}
 
 const router = createBrowserRouter([
   {

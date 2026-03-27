@@ -68,8 +68,6 @@ describe("readStream", () => {
 
   it("continues reading until done and calls onChunk with final empty decode if needed", async () => {
     const chunks = [new TextEncoder().encode("foo")];
-    let called = false;
-
     const reader = {
       read: vi.fn().mockImplementationOnce(() => Promise.resolve({ value: chunks[0], done: false }))
                  .mockImplementationOnce(() => Promise.resolve({ value: undefined, done: true })),

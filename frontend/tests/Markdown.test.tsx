@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
-import { beforeEach, describe, expect, it, vi, Mock } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
+import type { Mock } from "vitest";
 import MarkdownMessage from "../src/components/layout/chatbot/MarkdownMessage";
 import useLinkify from "../src/hooks/useLinkify";
 
@@ -28,16 +29,20 @@ describe("MarkdownMessage", () => {
     render(<MarkdownMessage>[Click me](https://example.com)</MarkdownMessage>);
     const a = screen.getByText("Click me");
     expect(a.tagName).toBe("A");
-    expect(a).toHaveClass(
-      "font-semibold text-primary cursor-pointer hover:underline",
-    );
+    const classList = a.classList;
+    expect(classList.contains("font-semibold")).toBe(true);
+    expect(classList.contains("text-primary")).toBe(true);
+    expect(classList.contains("cursor-pointer")).toBe(true);
+    expect(classList.contains("hover:underline")).toBe(true);
   });
 
   it("renders headings with correct className", () => {
     render(<MarkdownMessage>{"# Heading 1"}</MarkdownMessage>);
     const h1 = screen.getByText("Heading 1");
     expect(h1.tagName).toBe("H1");
-    expect(h1).toHaveClass("text-lg font-semibold");
+    const classList = h1.classList;
+    expect(classList.contains("text-lg")).toBe(true);
+    expect(classList.contains("font-semibold")).toBe(true);
   });
 
   it("renders list items", () => {
@@ -45,7 +50,10 @@ describe("MarkdownMessage", () => {
     const items = screen.getAllByRole("listitem");
     expect(items).toHaveLength(2);
     expect(items[0].tagName).toBe("LI");
-    expect(items[0]).toHaveClass("ml-4 mb-4 list-disc");
+    const classList = items[0].classList;
+    expect(classList.contains("ml-4")).toBe(true);
+    expect(classList.contains("mb-4")).toBe(true);
+    expect(classList.contains("list-disc")).toBe(true);
   });
 
   it("applies linkifyChildren to all nodes", () => {
