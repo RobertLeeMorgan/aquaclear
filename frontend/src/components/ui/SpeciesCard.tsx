@@ -5,7 +5,9 @@ export default function SpeciesCard({ species }: { species: Species }) {
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <div className="card bg-base-100 shadow-lg hover:shadow-xl transition-all duration-200 border border-base-200 flex flex-col">
+    <div
+      className="card bg-base-100 shadow-md  transition-transform hover:scale-[1.01] hover:shadow-lg duration-200 border border-base-200 flex flex-col"
+    >
       <figure>
         <img
           src={species.image}
@@ -16,9 +18,11 @@ export default function SpeciesCard({ species }: { species: Species }) {
 
       <div className="card-body space-y-3 px-4 sm:px-8 flex-1">
         <div>
-          <h2 className={`text-primary text-xl font-semibold ${
+          <h2
+            className={`text-primary text-xl font-semibold ${
               expanded ? "" : "line-clamp-1"
-            }`}>
+            }`}
+          >
             {species.commonName}
           </h2>
           {(species.scientificName || species.family) && (
@@ -51,11 +55,11 @@ export default function SpeciesCard({ species }: { species: Species }) {
         {(species.description.length > 80 ||
           species.identification.length > 100) && (
           <button
-          aria-label={`Read more about ${species.commonName}`}
+            aria-label={`Read more about ${species.commonName}`}
             onClick={() => setExpanded((e) => !e)}
             className="text-primary text-sm mt-1 font-medium hover:underline"
           >
-            {expanded ? "Show less" : "Read more" }
+            {expanded ? "Show less" : "Read more"}
           </button>
         )}
       </div>

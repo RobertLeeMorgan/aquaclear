@@ -1,89 +1,89 @@
-import { jest, describe, it, expect, beforeEach, afterEach, beforeAll } from "@jest/globals";
-import request from "supertest";
-import { setupMocks } from "./__mocks__/index.js";
+// tests/contact.test.ts
+import { describe, it, expect, vi, beforeEach } from "vitest";
+import { handleContactForm } from "../src/controllers/contactController.js";
+import { AppError } from "../src/utils/errors.js";
 
-let app: any;
-let TransactionalEmailsApi: any;
+// --- Mock Brevo ---
+const mockSend = vi.fn();
 
-beforeAll(async () => {
-  await setupMocks();
-
-  const appModule = await import("../src/index.js");
-  app = appModule.default;
-
-  const brevo = await import("@getbrevo/brevo");
-  TransactionalEmailsApi = brevo.TransactionalEmailsApi;
+vi.mock("@getbrevo/brevo", () => {
+  return {
+    TransactionalEmailsApiApiKeys: { apiKey: "apiKey" },
+    TransactionalEmailsApi: class {
+      setApiKey = vi.fn();
+      sendTransacEmail = mockSend;
+    },
+    SendSmtpEmail: class {},
+  };
 });
 
-describe("POST /api/contact", () => {
-  let spy: any;
+describe("handleContactForm", () => {
+  let req: any;
+  let res: any;
+  let next: any;
 
   beforeEach(() => {
-    spy = jest.spyOn(TransactionalEmailsApi.prototype, "sendTransacEmail");
+    mockSend.mockReset();
+
+    req = { body: {} };
+    res = {
+      status: vi.fn().mockReturnThis(),
+      json: vi.fn(),
+    };
+    next = vi.fn();
   });
 
-  afterEach(() => {
-    spy.mockRestore();
-    jest.clearAllMocks();
-  });
+  it("sends email successfully with valid input", async () => {
+    mockSend.mockResolvedValueOnce({ messageId: "123" });
 
-  it("returns 200 for valid form submission", async () => {
-    const res = await request(app).post("/api/contact").send({
+    req.body = {
+      email: "test@test.com",
+      message: "Hello there",
       name: "Robert",
-      email: "robert@example.com",
-      tel: "+44 1234 567890",
-      postcode: "AB12 3CD",
+      tel: "1234567890",
+      postcode: "12345",
       source: "Website",
-      message: "Hello there",
-    });
+    };
 
-    expect(res.status).toBe(200);
-    expect(res.body.success).toBe(true);
-    expect(spy).toHaveBeenCalled();
+    await handleContactForm(req, res, next);
+
+    expect(mockSend).toHaveBeenCalled();
+    const payload = mockSend.mock.calls[0]?.[0];
+    expect(payload).toHaveProperty("sender");
+    expect(payload).toHaveProperty("to");
+    expect(payload.textContent).toContain("Name: Robert");
+    expect(res.status).toHaveBeenCalledWith(200);
+    expect(res.json).toHaveBeenCalledWith({
+      success: true,
+      message: "Message sent successfully",
+    });
   });
 
-  it("returns 400 for invalid email", async () => {
-    const res = await request(app).post("/api/contact").send({
+  it("throws validation error for invalid email", async () => {
+    req.body = {
+      email: "invalid-email",
+      message: "Hello",
       name: "Robert",
-      email: "not-an-email",
-      tel: "+44 1234 567890",
-      postcode: "AB12 3CD",
-      message: "Hello there",
-    });
+      tel: "1234567890",
+      postcode: "12345",
+    };
 
-    expect(res.status).toBe(400);
-    expect(res.body.error).toContain("Invalid email");
-    expect(spy).not.toHaveBeenCalled();
+    await handleContactForm(req, res, next);
+
+    expect(next).toHaveBeenCalled();
+    const err = next.mock.calls[0][0];
+    expect(err).toBeInstanceOf(AppError);
+    expect(err.code).toBe("VALIDATION_ERROR");
   });
 
-  it("returns 200 if optional field is missing", async () => {
-    const res = await request(app).post("/api/contact").send({
-      name: "Robert",
-      email: "robert@example.com",
-      tel: "+44 1234 567890",
-      postcode: "AB12 3CD",
-      message: "Hello there",
-    });
+  it("handles missing fields", async () => {
+    req.body = {};
 
-    expect(res.status).toBe(200);
-    expect(res.body.success).toBe(true);
-    expect(spy).toHaveBeenCalled();
-  });
+    await handleContactForm(req, res, next);
 
-  it("returns 500 if Brevo fails", async () => {
-    spy.mockImplementationOnce(() => Promise.reject(new Error("Brevo failed")));
-
-    const res = await request(app).post("/api/contact").send({
-      name: "Robert",
-      email: "robert@example.com",
-      tel: "+44 1234 567890",
-      postcode: "AB12 3CD",
-      source: "Website",
-      message: "Hello there",
-    });
-
-    expect(res.status).toBe(500);
-    expect(res.body.error).toContain("Brevo failed");
-    expect(res.body.code).toBe("SERVER_ERROR");
+    expect(next).toHaveBeenCalled();
+    const err = next.mock.calls[0][0];
+    expect(err).toBeInstanceOf(AppError);
+    expect(err.code).toBe("VALIDATION_ERROR");
   });
 });

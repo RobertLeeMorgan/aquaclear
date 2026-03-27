@@ -1,5 +1,5 @@
 import request from "supertest";
-import { expect, describe, it } from "@jest/globals";
+import { expect, describe, it } from "vitest";
 import app from "../src/index.js";
 
 describe("GET /api/wakeup", () => {

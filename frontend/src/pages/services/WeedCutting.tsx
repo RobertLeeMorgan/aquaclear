@@ -97,7 +97,7 @@ export default function AquaticWeedCutting() {
           ].map(({ title, img, text }) => (
             <div
               key={title}
-              className="card bg-base-100 border border-base-300 shadow-md"
+              className="card bg-base-100 border border-base-300 shadow-md transition-transform hover:scale-[1.01] hover:shadow-lg duration-200"
             >
               <figure>
                 <img

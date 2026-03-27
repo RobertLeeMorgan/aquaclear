@@ -18,7 +18,7 @@ export default function SEOLink({
       {...({ href: to } as any)}
       to={to}
       aria-label={label || String(children)}
-      className={className}
+      className={`${className} transition-all hover:scale-[1.02] hover:shadow-sm duration-200`}
     >
       {children}
     </Link>

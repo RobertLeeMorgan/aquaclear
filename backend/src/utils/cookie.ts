@@ -1,5 +1,5 @@
 import { randomUUID } from "crypto";
-import { Request, Response } from "express";
+import type { Request, Response } from "express";
 
 export default async function getUserSession(req: Request, res: Response) {
   let userId = req.cookies.user_id;

@@ -6,8 +6,8 @@ import helmet from "helmet";
 import cookieParser from "cookie-parser";
 import {globalErrorHandler} from "./middleware/globalErrorHandler.js";
 
-// import dotenv from "dotenv";
-// dotenv.config();
+import dotenv from "dotenv";
+dotenv.config();
 
 const app = express();
 

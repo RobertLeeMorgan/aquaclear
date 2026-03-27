@@ -16,7 +16,7 @@ export default function ChatInput({
 }: ChatInputProps) {
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
 
-  // Auto-resize textarea height based on content
+  // Auto-resize textarea height
   useEffect(() => {
     const el = textareaRef.current;
     if (el) {

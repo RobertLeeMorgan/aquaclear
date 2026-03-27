@@ -1,4 +1,4 @@
-import SEOLink from "../../ui/SEOLink";
+import { Link } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
 
 export default function DesktopMenu({ label, links }: { label: string; links: { to: string; label: string }[] }) {
@@ -27,7 +27,7 @@ export default function DesktopMenu({ label, links }: { label: string; links: { 
         <ul className="p-2 w-48 z-50">
           {links.map((link) => (
             <li key={link.to}>
-              <SEOLink to={link.to}>{link.label}</SEOLink>
+              <Link to={link.to}>{link.label}</Link>
             </li>
           ))}
         </ul>

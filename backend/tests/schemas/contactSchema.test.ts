@@ -1,5 +1,5 @@
-import { contactSchema } from "../../src/schemas/contactSchema";
-import { describe, it, expect } from "@jest/globals"
+import { contactSchema } from "../../src/schemas/contactSchema.js";
+import { describe, it, expect } from "vitest"
 
 describe("Contact form schema", () => {
   it("accepts valid data", () => {

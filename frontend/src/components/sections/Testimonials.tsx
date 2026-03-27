@@ -10,7 +10,7 @@ export default function Testimonials() {
       <div className="carousel flex carousel-start mx-auto max-w-5xl mx-auto space-x-6 p-4 rounded-box">
         {testimonials.map((t, i) => (
           <div key={i} className="carousel-item">
-            <div className="card bg-base-100 shadow-md w-80 h-full">
+            <div className="card bg-base-100 shadow-md w-80 h-full transition-transform hover:scale-[1.01] hover:shadow-lg duration-200">
               <div className="card-body items-center text-center">
                 <div className="rating mb-2">
                   {[...Array(5)].map((_, j) => (

@@ -1,144 +1,107 @@
-// tests/useChatbot.test.tsx
-import { renderHook, act, waitFor } from "@testing-library/react";
-import { vi, describe, test, expect, beforeEach } from "vitest";
-import { useChatbot } from "../src/components/hooks/useChatbot";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+// tests/useChatbot.test.ts
+import { vi, describe, it, expect, beforeEach } from "vitest";
+import { renderHook, act } from "@testing-library/react";
+import { useChatbot, Msg } from "../src/hooks/useChatbot";
+import * as sendMessageHook from "../src/hooks/useSendMessage";
+import * as chatSchema from "../src/schemas/chatSchema";
+import * as getErrorMsg from "../src/utils/getErrorMessage";
 
-function wrapper({ children }: { children: React.ReactNode }) {
-  const queryClient = new QueryClient();
-  return <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>;
-}
+const GREETING: Msg = {
+  id: "greeting",
+  role: "bot",
+  text: "Hello — I'm AquaclearBot. I'm here to answer questions about Aquaclear's services (weed-cutting, silt management, Truxor machines, site visits). How can I help you today?",
+};
 
-// Mock useSendMessage hook
-const mutateMock = vi.fn();
-vi.mock("../src/components/hooks/useSendMessage", () => ({
-  useSendMessage: vi.fn(() => ({
-    mutate: mutateMock,
-    isPending: false,
-  })),
-}));
+describe("useChatbot hook", () => {
+  let mutateMock: any;
 
-describe("useChatbot hook (untested parts)", () => {
   beforeEach(() => {
+    // Reset mocks
     vi.restoreAllMocks();
-    mutateMock.mockReset();
-  });
-
-  test("loadHistory sets GREETING on 401/403", async () => {
-    vi.spyOn(global, "fetch").mockResolvedValue({ status: 401 } as any);
-
-    const { result } = renderHook(() => useChatbot(), { wrapper });
-
-    await act(async () => {
-      await result.current.loadHistory();
-    });
-
-    expect(result.current.messages[0].text).toContain("Hello — I'm AquaclearBot");
-  });
-
-  test("loadHistory sets GREETING on non-ok response", async () => {
-    vi.spyOn(global, "fetch").mockResolvedValue({ status: 500, ok: false } as any);
-
-    const { result } = renderHook(() => useChatbot(), { wrapper });
-
-    await act(async () => {
-      await result.current.loadHistory();
-    });
-
-    expect(result.current.messages[0].text).toContain("Hello — I'm AquaclearBot");
-  });
-
-  test("loadHistory prepends GREETING if missing", async () => {
-    const history = [{ role: "bot", text: "Previous message" }];
-    vi.spyOn(global, "fetch").mockResolvedValue({
-      ok: true,
-      json: async () => ({ history }),
+    mutateMock = vi.fn();
+    
+    // Mock useSendMessage
+    vi.spyOn(sendMessageHook, "useSendMessage").mockReturnValue({
+      mutate: mutateMock,
+      isPending: false,
+      isSuccess: false,
+      isError: false,
+      data: undefined,
+      error: null,
+      variables: undefined,
+      isLoading: false,
+      isIdle: true,
+      status: "idle",
+      reset: vi.fn(),
     } as any);
 
-    const { result } = renderHook(() => useChatbot(), { wrapper });
+    // Mock validateChatInput
+    vi.spyOn(chatSchema, "validateChatInput").mockImplementation((v) => v);
 
-    await act(async () => {
-      await result.current.loadHistory();
+    // Mock getErrorMessage
+    vi.spyOn(getErrorMsg, "default").mockImplementation((e) => "error-message");
+
+    // Mock localStorage
+    vi.stubGlobal("localStorage", {
+      getItem: vi.fn().mockReturnValue(null),
+      setItem: vi.fn(),
     });
 
-    expect(result.current.messages[0].text).toContain("Hello — I'm AquaclearBot");
-    expect(result.current.messages[1]).toEqual(history[0]);
+    // Mock crypto.randomUUID
+    vi.stubGlobal("crypto", {
+      randomUUID: vi.fn(() => "random-id"),
+    });
   });
 
-  test("loadHistory keeps GREETING if first message present", async () => {
-    const history = [
-      { role: "bot", text: "Hello — I'm AquaclearBot. I'm here to answer questions about Aquaclear's services (weed-cutting, silt management, Truxor machines, site visits). How can I help you today?" },
-      { role: "user", text: "Hi" }
-    ];
-    vi.spyOn(global, "fetch").mockResolvedValue({
-      ok: true,
-      json: async () => ({ history }),
-    } as any);
-
-    const { result } = renderHook(() => useChatbot(), { wrapper });
-
-    await act(async () => {
-      await result.current.loadHistory();
-    });
-
-    expect(result.current.messages).toEqual(history);
+  it("initializes with GREETING message", () => {
+    const { result } = renderHook(() => useChatbot());
+    expect(result.current.messages).toEqual([GREETING]);
+    expect(result.current.input).toBe("");
   });
 
-  test("loadHistory handles fetch exception", async () => {
-    vi.spyOn(global, "fetch").mockRejectedValue(new Error("fail"));
-
-    const { result } = renderHook(() => useChatbot(), { wrapper });
-
-    await act(async () => {
-      await result.current.loadHistory();
-    });
-
-    expect(result.current.messages[0].text).toContain("Hello — I'm AquaclearBot");
+  it("updates input state", () => {
+    const { result } = renderHook(() => useChatbot());
+    act(() => result.current.setInput("Hello"));
+    expect(result.current.input).toBe("Hello");
   });
 
-  test("sendMessage does nothing on empty input", () => {
-    const { result } = renderHook(() => useChatbot(), { wrapper });
-
-    act(() => {
-      result.current.sendMessage();
-    });
-
+  it("does not send empty input", () => {
+    const { result } = renderHook(() => useChatbot());
+    act(() => result.current.sendMessage());
     expect(mutateMock).not.toHaveBeenCalled();
   });
 
-  test("sendMessage adds user + loading messages for valid input", () => {
-    const { result } = renderHook(() => useChatbot(), { wrapper });
-    act(() => {
-      result.current.setInput("Hello");
-      result.current.sendMessage();
+  it("sends message correctly", () => {
+    const { result } = renderHook(() => useChatbot());
+    act(() => result.current.setInput("Test message"));
+
+    act(() => result.current.sendMessage());
+
+    expect(result.current.messages.length).toBe(3); // GREETING + user + bot
+    expect(result.current.messages[1]).toEqual({
+      id: "random-id",
+      role: "user",
+      text: "Test message",
+    });
+    expect(result.current.messages[2]).toEqual({
+      id: "random-id",
+      role: "bot",
+      text: "",
     });
 
-    waitFor(() => {
-    const lastTwo = result.current.messages.slice(-2);
-    expect(lastTwo).toEqual([
-      { role: "user", text: "Hello" },
-      { role: "bot", text: "loading" },
-    ]);
+    expect(mutateMock).toHaveBeenCalled();
   });
-  });
 
-  test("scrollIntoView is called when messages change", () => {
-    const scrollMock = vi.fn();
-    const { result } = renderHook(() => useChatbot(), { wrapper });
-    act(() => {
-      const div = document.createElement("div");
-      div.scrollIntoView = scrollMock;
-      result.current.messagesEndRef.current = div;
+  it("handles error from mutate", () => {
+    mutateMock.mockImplementationOnce((_args: any, options: any) => {
+      options.onError(new Error("fail"));
     });
 
-    // Trigger a state change via sendMessage
-    act(() => {
-      result.current.setInput("Hello");
-      result.current.sendMessage();
-    });
+    const { result } = renderHook(() => useChatbot());
+    act(() => result.current.setInput("fail test"));
 
-    waitFor(() => {
-      expect(scrollMock).toHaveBeenCalled();
-    });
+    act(() => result.current.sendMessage());
+
+    expect(result.current.messages[2].text).toBe("error-message");
   });
 });

@@ -1,5 +1,5 @@
-import { describe, it, expect } from "@jest/globals";
-import { chatbotSchema } from "../../src/schemas/chatbotSchema";
+import { describe, it, expect } from "vitest";
+import { chatbotSchema } from "../../src/schemas/chatbotSchema.js";
 
 describe("chatbotSchema", () => {
   it("should parse valid message correctly", () => {

@@ -1,26 +1,21 @@
 import ChatMessages from "./ChatMessages";
 import ChatInput from "./ChatInput";
 import ChatbotIcon from "./ChatbotIcon";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { FaTimes } from "react-icons/fa";
 import { useChatbot } from "../../../hooks/useChatbot";
 
 export default function Chatbot() {
   const [open, setOpen] = useState(false);
+
   const {
     messages,
     input,
     setInput,
     sendMessage,
     messagesEndRef,
-    loadHistory,
+    loading,
   } = useChatbot();
-
-  useEffect(() => {
-    if (open) {
-      loadHistory();
-    }
-  }, [open]);
 
   return (
     <>
@@ -32,6 +27,7 @@ export default function Chatbot() {
           onClick={() => setOpen(false)}
         />
       )}
+
       {open && (
         <div
           className={`fixed top-0 right-0 h-full w-80 sm:w-96 bg-base-200 shadow-lg rounded-l-xl z-50 transform transition-transform duration-300 flex flex-col justify-between px-4 pb-4 ${
@@ -45,13 +41,17 @@ export default function Chatbot() {
             </button>
           </div>
 
-          <ChatMessages messages={messages} messagesEndRef={messagesEndRef} />
+          <ChatMessages
+            messages={messages}
+            messagesEndRef={messagesEndRef}
+            isStreaming={loading}
+          />
 
           <ChatInput
             input={input}
             setInput={setInput}
             sendMessage={sendMessage}
-            disabled={messages.some((m) => m.text === "loading")}
+            disabled={loading}
           />
         </div>
       )}

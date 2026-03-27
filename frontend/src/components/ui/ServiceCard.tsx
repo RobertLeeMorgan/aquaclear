@@ -18,7 +18,9 @@ export default function ServiceCard({
   return (
     <div
       key={title}
-      className="card bg-base-200 shadow-md hover:shadow-xl transition max-w-[300px]"
+      className="card bg-base-200 shadow-md max-w-[300px] transition-transform 
+          hover:scale-[1.01]
+          hover:shadow-lg"
     >
       <figure>
         <img

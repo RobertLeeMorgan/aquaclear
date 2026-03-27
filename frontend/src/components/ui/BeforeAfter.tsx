@@ -23,9 +23,10 @@ export default function BeforeAfter({
           overflow-hidden 
           shadow-md 
           border border-base-300 
-          transition-transform 
+          transition-all 
           hover:scale-[1.01]
-          hover:shadow-xl
+          hover:shadow-lg
+          duration-200
         "
       >
         <div className="diff-item-1">

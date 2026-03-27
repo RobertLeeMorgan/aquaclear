@@ -4,7 +4,7 @@ import ServiceCard from "../ui/ServiceCard";
 
 export default function Services() {
   return (
-    <section className="px-4 sm:px-8 py-12 md:py-16 max-w-6xl mx-auto">
+    <section className="px-4 sm:px-8 py-12 md:py-16 max-w-6xl mx-auto" id="services">
       <h2 className="text-3xl font-bold text-center mb-4 sm:mb-10 text-primary">
         What We Do
       </h2>

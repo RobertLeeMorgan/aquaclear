@@ -7,8 +7,17 @@ export const chatbotSchema = z.object({
     .string()
     .trim()
     .min(1, "Message cannot be empty")
-    .max(700, "Message too long")
+    .max(500, "Message too long")
     .transform(stripHTML),
+    
+  context: z
+    .array(
+      z.object({
+        role: z.enum(["user", "bot"]),
+        text: z.string(),
+      }),
+    )
+    .default([]),
 });
 
 export type ChatbotRequest = z.infer<typeof chatbotSchema>;

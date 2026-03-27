@@ -3,7 +3,6 @@ import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import Contact from "../src/pages/Contact";
 import { vi, describe, test, beforeEach, expect } from "vitest";
 import "@testing-library/jest-dom";
-import { HelmetProvider } from "react-helmet-async";
 
 // Mock global fetch and alert
 global.fetch = vi.fn(() =>
@@ -22,12 +21,10 @@ describe("Contact Page", () => {
 
   test("renders all form fields", () => {
     render(
-      <HelmetProvider>
         <Contact />
-      </HelmetProvider>
     );
 
-    expect(screen.getByText("Contact")).toBeInTheDocument(); // Match your PageHeader title
+    expect(screen.getByText("Contact")).toBeInTheDocument();
     expect(screen.getByLabelText("Full Name *")).toBeInTheDocument();
     expect(screen.getByLabelText("E-mail *")).toBeInTheDocument();
     expect(screen.getByLabelText("Tel *")).toBeInTheDocument();
@@ -38,9 +35,7 @@ describe("Contact Page", () => {
 
   test("submits the form and shows success alert", async () => {
     render(
-      <HelmetProvider>
         <Contact />
-      </HelmetProvider>
     );
 
     // Fill form fields

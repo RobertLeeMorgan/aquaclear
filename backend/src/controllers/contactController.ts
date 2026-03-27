@@ -1,8 +1,9 @@
-import { Request, Response, NextFunction } from "express";
+import type { Request, Response, NextFunction } from "express";
 import {
   TransactionalEmailsApi,
   SendSmtpEmail,
-  TransactionalEmailsApiApiKeys,} from "@getbrevo/brevo";
+  TransactionalEmailsApiApiKeys,
+} from "@getbrevo/brevo";
 import { contactSchema } from "../schemas/contactSchema.js";
 import { AppError } from "../utils/errors.js";
 
@@ -18,7 +19,7 @@ interface ContactFormData {
 export async function handleContactForm(
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) {
   try {
     // Validate input using Zod
@@ -26,7 +27,11 @@ export async function handleContactForm(
     if (!parseResult.success) {
       const message =
         parseResult.error.issues[0]?.message || "Invalid form input.";
-      throw new AppError("VALIDATION_ERROR", message, "Invalid input provided.");
+      throw new AppError(
+        "VALIDATION_ERROR",
+        message,
+        "Invalid input provided.",
+      );
     }
 
     const { name, email, tel, postcode, source, message }: ContactFormData =
@@ -36,7 +41,7 @@ export async function handleContactForm(
     const brevoClient = new TransactionalEmailsApi();
     brevoClient.setApiKey(
       TransactionalEmailsApiApiKeys.apiKey,
-      process.env.BREVO_API_KEY!
+      process.env.BREVO_API_KEY!,
     );
 
     // Build email payload
@@ -68,7 +73,7 @@ ${message}`;
       "Contact form email sent successfully from:",
       email,
       "Brevo response:",
-      response
+      response,
     );
 
     return res
@@ -86,8 +91,8 @@ ${message}`;
       new AppError(
         "SERVER_ERROR",
         err.message || "Unexpected error",
-        "Failed to send message. Please try again later."
-      )
+        "Failed to send message. Please try again later.",
+      ),
     );
   }
 }

@@ -27,9 +27,12 @@ export default function Hero() {
             the UK.
           </p>
           <div className="flex justify-center gap-4">
-            <SEOLink to="/services" className="btn btn-primary">
+            <a
+              href="#services"
+              className="btn btn-primary transition-all hover:scale-[1.02] hover:shadow-lg duration-200"
+            >
               Our Services
-            </SEOLink>
+            </a>
             <SEOLink to="/contact" className="btn btn-outline btn-secondary">
               Get in Touch
             </SEOLink>

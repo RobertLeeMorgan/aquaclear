@@ -12,7 +12,9 @@ export default function SiteSpecificCarousel() {
         {siteTypes.map((site: Sites, i) => (
           <div
             key={i}
-            className="carousel-item flex-shrink-0 card w-64 overflow-hidden bg-base-100 rounded-2xl shadow-lg"
+            className="carousel-item flex-shrink-0 card w-64 overflow-hidden bg-base-100 rounded-2xl shadow-md transition-transform 
+          hover:scale-[1.01]
+          hover:shadow-lg duration-200"
           >
             <figure>
               <img

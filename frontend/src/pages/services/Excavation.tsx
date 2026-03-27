@@ -52,7 +52,7 @@ export default function ExcavationDitching() {
 
           <div className="grid md:grid-cols-2 gap-6">
             {/* Excavator Arm */}
-            <div className="card bg-base-100 border border-base-300 shadow-md">
+            <div className="card bg-base-100 border border-base-300 shadow-md transition-transform hover:scale-[1.01] hover:shadow-lg duration-200">
               <figure>
                 <img
                   src="/images/truxor/truxorexcavator.webp"
@@ -74,7 +74,7 @@ export default function ExcavationDitching() {
             </div>
 
             {/* Grab Bucket */}
-            <div className="card bg-base-100 border border-base-300 shadow-md">
+            <div className="card bg-base-100 border border-base-300 shadow-md transition-transform hover:scale-[1.01] hover:shadow-lg duration-200">
               <figure>
                 <img
                   src="/images/truxor/grabbucket.webp"
@@ -121,7 +121,7 @@ export default function ExcavationDitching() {
           </div>
         </div>
 
-        {/* ---------------- Project Example ---------------- */}
+        {/* --------------- Project Example --------------- */}
         <div className="text-center space-y-6">
           <h2 className="text-3xl font-bold text-primary">Project Example</h2>
           <BeforeAfter

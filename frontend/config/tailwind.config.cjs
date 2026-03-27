@@ -18,19 +18,21 @@ module.exports = {
   },
   plugins: [daisyui],
   daisyui: {
-    themes: [ {
+    themes: [
+      {
         dark: {
           ...require("daisyui/src/theming/themes")["dark"],
           primary: "#0ca1dbff", // new primary for dark
-          secondary: "#0ce65cff"
+          secondary: "#0ce65cff",
         },
       },
       {
         emerald: {
           ...require("daisyui/src/theming/themes")["emerald"],
           primary: "#0ca1dbff", // new primary for emerald
-          secondary: "#0ce65cff"
+          secondary: "#0ce65cff",
         },
-      },],
+      },
+    ],
   },
 };

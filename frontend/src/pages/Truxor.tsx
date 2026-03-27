@@ -15,7 +15,7 @@ export default function Truxor() {
             </>
           }
         />
-        
+
         {/* Image */}
         <figure className="flex justify-center">
           <img
@@ -55,7 +55,7 @@ export default function Truxor() {
           </ul>
         </section>
 
-        <TruxorContact/>
+        <TruxorContact />
 
         {/* CTA Button */}
         <div className="text-center mt-6">

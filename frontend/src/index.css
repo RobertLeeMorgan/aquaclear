@@ -10,3 +10,16 @@
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;     /* Firefox */
 }
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+.typing-cursor {
+  animation: blink 1s step-end infinite;
+}
+
+.prose p {
+  display: inline;
+  margin:0
+}

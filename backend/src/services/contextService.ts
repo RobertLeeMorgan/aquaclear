@@ -1,55 +1,56 @@
-import { supabase } from "../supabaseClient.js";
 import isVagueMessage from "../utils/vagueMessage.js";
 import getSectionFilter from "../utils/sectionFilter.js";
-import { OpenAI } from "openai";
-import { DatabaseError, ContextError, AppError } from "../utils/errors.js";
-
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+import { ContextError, AppError } from "../utils/errors.js";
+import { chunks } from "./vectorStore.js";
+import { cosineSimilarity } from "../utils/cosineSimilarity.js";
 
 export async function getContextForMessage(
   message: string,
   queryEmbedding: number[],
-  lastAssistantMsg: string
+  lastAssistantMsg: string,
 ) {
   try {
-    const sectionFilters = getSectionFilter(message);
-    console.log(sectionFilters);
     const aiAskedForFollowUp =
       /would you like|want to learn more|see more|need more info|link/i.test(
-        lastAssistantMsg
+        lastAssistantMsg,
       );
 
     if (isVagueMessage(message) && !aiAskedForFollowUp) return "";
 
-    const { data, error } = await supabase.rpc("match_site_documents", {
-      query_embedding: queryEmbedding,
-      match_count: 6,
-      section_filters: sectionFilters.length ? sectionFilters : null,
-    });
+    const sectionFilters = getSectionFilter(message);
 
-    if (error) {
-      throw new DatabaseError(
-        error.message || "Vector search failed",
-        "Failed to connect to the database."
+    let scored = chunks.map((c) => ({
+      ...c,
+      score: cosineSimilarity(queryEmbedding, c.embedding),
+    }));
+
+    if (sectionFilters?.length) {
+      scored = scored.filter((c) =>
+        sectionFilters.some(
+          (filter) =>
+            c.page_url === `/${filter}` ||
+            c.page_url?.startsWith(`/${filter}/`),
+        ),
       );
     }
 
-    const chunks = data ?? [];
-    if (!chunks.length) return "";
+    const topChunks = scored.sort((a, b) => b.score - a.score).slice(0, 3);
+    if (!topChunks.length) return "";
 
-    return chunks
+    return topChunks
       .map(
-        (c: any, i: number) => `### Context ${i + 1}
+        (c, i) => `### Context ${i + 1}
 ${c.content.trim()}
 
-URL: ${c.page_url ?? "N/A"}`
+URL: ${c.page_url ?? "N/A"}`,
       )
       .join("\n\n---\n\n");
   } catch (err) {
     if (err instanceof AppError) throw err;
+
     throw new ContextError(
       (err as Error).message || "Context retrieval failed",
-      "Failed to prepare context for your message."
+      "Failed to prepare context for your message.",
     );
   }
 }

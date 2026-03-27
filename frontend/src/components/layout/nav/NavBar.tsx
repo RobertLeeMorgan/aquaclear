@@ -3,6 +3,8 @@ import DesktopMenu from "./DesktopMenu";
 import MobileMenu from "./MobileMenu";
 import ThemeSelector from "./ThemeSelector";
 import { servicesLinks, galleryLinks } from "./menuData";
+import aquaclear from "../../../assets/logos/aquaclear.png"
+import { Link } from "react-router-dom";
 
 export default function NavBar() {
   return (
@@ -17,29 +19,29 @@ export default function NavBar() {
           </div>
 
           {/* Mobile menu */}
-          <ul tabIndex={0} className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-            <li><SEOLink to="/home">Aquaclear</SEOLink></li>
-            <li><SEOLink to="/about">About</SEOLink></li>
+          <ul tabIndex={0} className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2">
+            <li><Link to="/home">Aquaclear</Link></li>
+            <li><Link to="/about">About</Link></li>
             <MobileMenu label="Services" links={servicesLinks} />
             <MobileMenu label="Gallery" links={galleryLinks} />
-            <li><SEOLink to="/clients">Clients</SEOLink></li>
-            <li><SEOLink to="/truxor">Truxor</SEOLink></li>
-            <li><SEOLink to="/contact">Contact</SEOLink></li>
+            <li><Link to="/clients">Clients</Link></li>
+            <li><Link to="/truxor">Truxor</Link></li>
+            <li><Link to="/contact">Contact</Link></li>
           </ul>
         </div>
-        <SEOLink to="/home" className="btn btn-ghost text-primary text-xl">Aquaclear</SEOLink>
+        <SEOLink to="/home" className="btn btn-ghost text-primary text-xl place-content-center"><img src={aquaclear} className="-ml-2 sm:ml-0 w-12 sm:w-16" /><span className="-ml-3">quaclear</span></SEOLink>
       </div>
 
       {/* Center (Desktop) */}
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
-          <li><SEOLink to="/home">Home</SEOLink></li>
-          <li><SEOLink to="/about">About</SEOLink></li>
+          <li><Link to="/home">Home</Link></li>
+          <li><Link to="/about">About</Link></li>
           <DesktopMenu label="Services" links={servicesLinks} />
           <DesktopMenu label="Gallery" links={galleryLinks} />
-          <li><SEOLink to="/clients">Clients</SEOLink></li>
-          <li><SEOLink to="/truxor">Truxor</SEOLink></li>
-          <li><SEOLink to="/contact">Contact</SEOLink></li>
+          <li><Link to="/clients">Clients</Link></li>
+          <li><Link to="/truxor">Truxor</Link></li>
+          <li><Link to="/contact">Contact</Link></li>
         </ul>
       </div>
 

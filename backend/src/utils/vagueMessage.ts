@@ -2,6 +2,9 @@ export default function isVagueMessage(msg: string) {
   const trimmed = msg.trim().toLowerCase();
 
   const vaguePatterns: RegExp[] = [
+    /^hello[.!?]*$/i,
+    /^hi[.!?]*$/i,
+    /^hey[.!?]*$/i,
     /^sure[.!?]*$/i,
     /^you sure[.!?]*$/i,
     /^go ahead[.!?]*$/i,
