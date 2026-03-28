@@ -30,16 +30,8 @@ app.use(
   }),
 );
 
-app.use(
-  compression({
-    filter: (req, res) => {
-      if (req.headers["accept"]?.includes("text/event-stream")) {
-        return false;
-      }
-      return compression.filter!(req, res);
-    },
-  }),
-);
+app.use("/api", (req, res, next) => next());
+app.use(compression());
 
 app.use(express.json());
 

@@ -91,6 +91,7 @@ export async function handleChatbot(
         if (content) {
           fullReply += content;
           res.write(content);
+          res.flush?.()
         }
       }
     } catch (err) {
