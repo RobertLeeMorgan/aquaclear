@@ -59,7 +59,7 @@ app.get("/api/wakeup", (req, res) => {
 
 app.use(express.static(publicPath));
 
-app.get("(.*)", (req, res, next) => {
+app.get("/:path(*)", (req, res, next) => {
   if (req.path.startsWith("/api")) return next();
   res.sendFile(path.join(publicPath, "index.html"));
 });
