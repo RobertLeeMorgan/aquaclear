@@ -16,6 +16,9 @@ COPY tsconfig.json ./
 # Build TypeScript
 RUN npm run build
 
+# Copy frontend build
+COPY public ./public
+
 # ---------- STAGE 2: Production ----------
 FROM node:20-alpine
 
