@@ -6,6 +6,6 @@ const router = express.Router();
 
 router.use(limiter);
 
-router.post("/contact", handleContactForm);
+router.post("/", handleContactForm);
 
 export default router;

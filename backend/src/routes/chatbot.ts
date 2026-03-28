@@ -9,7 +9,7 @@ const router = express.Router();
 
 router.use(limiter);
 
-router.post("/chatbot", (req: Request, res: Response, next: NextFunction) => {
+router.post("/", (req: Request, res: Response, next: NextFunction) => {
     const parsed = chatbotSchema.safeParse(req.body);
     if (!parsed.success) {
       const message = parsed.error.issues.map((i) => i.message).join(", ");

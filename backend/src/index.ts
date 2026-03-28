@@ -49,9 +49,9 @@ app.use(cookieParser());
 
 app.set("trust proxy", 1);
 
-app.use("/api", contactRouter);
+app.use("/api/contact", contactRouter);
 
-app.use("/api", chatbotRouter);
+app.use("/api/chatbot", chatbotRouter);
 
 app.get("/api/wakeup", (req, res) => {
   res.status(200).send("Aquaclear API is running!");
@@ -59,7 +59,7 @@ app.get("/api/wakeup", (req, res) => {
 
 app.use(express.static(publicPath));
 
-app.get("*", (req, res) => {
+app.get("/*", (req, res) => {
   res.sendFile(path.join(publicPath, "index.html"));
 });
 
