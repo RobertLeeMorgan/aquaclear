@@ -4,12 +4,19 @@ import chatbotRouter from "./routes/chatbot.js";
 import contactRouter from "./routes/contact.js";
 import helmet from "helmet";
 import cookieParser from "cookie-parser";
-import {globalErrorHandler} from "./middleware/globalErrorHandler.js";
+import { globalErrorHandler } from "./middleware/globalErrorHandler.js";
 
-import dotenv from "dotenv";
-dotenv.config();
+import path from "path";
+import { fileURLToPath } from "url";
+import compression from "compression";
+
+// import dotenv from "dotenv";
+// dotenv.config();
 
 const app = express();
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const publicPath = path.join(__dirname, "../public");
 
 app.use(
   cors({
@@ -20,7 +27,18 @@ app.use(
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
-  })
+  }),
+);
+
+app.use(
+  compression({
+    filter: (req, res) => {
+      if (req.headers["accept"]?.includes("text/event-stream")) {
+        return false;
+      }
+      return compression.filter!(req, res);
+    },
+  }),
 );
 
 app.use(express.json());
@@ -33,14 +51,16 @@ app.set("trust proxy", 1);
 
 app.use("/api", contactRouter);
 
-app.use("/api/chatbot", chatbotRouter);
+app.use("/api", chatbotRouter);
 
 app.get("/api/wakeup", (req, res) => {
   res.status(200).send("Aquaclear API is running!");
 });
 
-app.use((req, res) => {
-  res.status(404).json({ error: "Route not found" });
+app.use(express.static(publicPath));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(publicPath, "index.html"));
 });
 
 app.use(globalErrorHandler);
