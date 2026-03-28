@@ -10,7 +10,8 @@ COPY package*.json ./
 RUN npm ci
 
 # Copy source
-COPY . .
+COPY src ./src
+COPY tsconfig.json ./
 
 # Build TypeScript
 RUN npm run build
@@ -20,12 +21,14 @@ FROM node:20-alpine
 
 WORKDIR /app
 
+ENV NODE_ENV=production
+
 # Copy only the dist folder and package.json / package-lock.json
 COPY --from=build /app/dist ./dist
 COPY package*.json ./
 
 # Install only production dependencies
-RUN npm ci --omit=dev
+RUN npm ci --omit=dev --omit=optional
 
 # Expose port
 EXPOSE 5000
