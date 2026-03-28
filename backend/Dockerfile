@@ -25,6 +25,7 @@ ENV NODE_ENV=production
 
 # Copy only the dist folder and package.json / package-lock.json
 COPY --from=build /app/dist ./dist
+COPY --from=build /app/src/data ./dist/data
 COPY package*.json ./
 
 # Install only production dependencies
