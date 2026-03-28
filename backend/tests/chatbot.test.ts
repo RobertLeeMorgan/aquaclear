@@ -91,7 +91,7 @@ describe("handleChatbot", () => {
     await handleChatbot(req as Request, res as Response, next);
 
     expect(getContextForMessage).not.toHaveBeenCalled();
-    expect(res.setHeader).toHaveBeenCalledWith("Content-Type", "text/plain; charset=utf-8");
+    expect(res.setHeader).toHaveBeenCalledWith("Content-Type", "text/event-stream");
     expect(res.end).toHaveBeenCalled();
   });
 
@@ -133,10 +133,9 @@ describe("handleChatbot", () => {
   });
 
   it("handles missing message gracefully", async () => {
-    req.body = {} as any; // simulate missing message
+    req.body = {} as any;
     await handleChatbot(req as Request, res as Response, next);
 
-    // Should throw AuthError or end response without crashing
     expect(next).toHaveBeenCalledTimes(1);
   });
 });
